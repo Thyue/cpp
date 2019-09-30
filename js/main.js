@@ -41,7 +41,25 @@ var app = new Vue({
   mounted: function() {
     //在網頁載入完成是將訪客人數加1並且寫入資料庫
     ref_visitor.once('value', function(snapshot) {
-      ref_visitor.set(snapshot.val() + 1);
+      //檢查目標cookie函式
+      function readCookie(name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+      //判定是否有目標cookie
+      if (readCookie('customsWhisper') == 'Thyue') {
+        console.log('已經有cookies');
+      } else {
+        console.log('沒有cookies');
+        document.cookie = 'customsWhisper=Thyue; max-age=43200; path=/'; // 給一組時效12小時之cookie
+        ref_visitor.set(snapshot.val() + 1);
+      }
     });
     //時間計時器
     let _this = this;

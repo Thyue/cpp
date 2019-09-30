@@ -41,8 +41,8 @@
       <article class="container mt-1">
         <div class="info text-right">
           <p></p>
-          <p id="nowDate">108年09月30日 周四</p>
-          <p id="nowTime">19時20分10秒</p>
+          <p>{{ now | formatNowDate }}</p>
+          <p>{{ now | formatNowTime }}</p>
         </div>
         <div class="text-center">
           <form class="form-signin">
