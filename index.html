@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/png" href="./img/favicon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="./css/index.min.css" />
+    <title>C++ 程式設計筆記</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <nav class="navbar navbar-dark bg-dark">
+          <a class="navbar-brand" href="./index.html">
+            <img src="./img/code.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+          </a>
+          <ul class="nav justify-content-end">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">考題</a>
+              <div class="dropdown-menu">
+                <!-- |考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題| -->
+                <button id="goto_exam_01" class="dropdown-item">for迴圈輸出三角形</button>
+                <button id="goto_exam_02" class="dropdown-item">九九乘法表</button>
+                <button id="goto_exam_03" class="dropdown-item">大樂透</button>
+                <button id="goto_exam_04" class="dropdown-item">身高常態分佈</button>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">章節</a>
+              <div class="dropdown-menu">
+                <!-- |章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節| -->
+                <button id="goto_1080912_01" class="dropdown-item">基礎入門</button>
+                <button id="goto_1080912_02" class="dropdown-item">資料型態</button>
+                <button id="goto_1080912_03" class="dropdown-item">變數</button>
+                <button id="goto_1080912_04" class="dropdown-item">終端機輸入&輸出</button>
+                <button id="goto_1080912_05" class="dropdown-item">算術運算</button>
+                <button id="goto_1080919_01" class="dropdown-item">關係運算&條件運算</button>
+                <button id="goto_1080919_02" class="dropdown-item">邏輯運算&位元運算</button>
+                <button id="goto_1080919_03" class="dropdown-item">if條件判斷</button>
+                <button id="goto_1080919_04" class="dropdown-item">switch條件判斷</button>
+                <button id="goto_1080919_05" class="dropdown-item">遞增、遞減、指定運算</button>
+                <button id="goto_1080919_06" class="dropdown-item">for迴圈</button>
+                <button id="goto_1080919_07" class="dropdown-item">while迴圈</button>
+                <button id="goto_1080919_08" class="dropdown-item">break & continue & goto</button>
+                <button id="goto_1080926_01" class="dropdown-item">字面常量</button>
+                <button id="goto_1080926_02" class="dropdown-item">亂數</button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./login.html">登入</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="pageTitle">
+          <div class="container">
+            <h1>
+              <a href="./index.html">趙德柱-程式設計筆記</a>
+            </h1>
+            <h2>工作累積多年的程式設計經歷，樂於分享我的知識與經驗給更多的朋友學習</h2>
+          </div>
+        </div>
+        <div id="gotop">TOP</div>
+      </header>
+      <article class="container mt-1">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" :style="{width : progress}">{{ progressFiliter }}</div>
+        </div>
+        <div class="info text-right">
+          <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
+          <p>更新 <span>108/09/28 (六) 21時</span></p>
+          <p>{{ now | formatNowDate }}</p>
+          <p>{{ now | formatNowTime }}</p>
+
+          <div class="infoPic">
+            <a href="https://www.facebook.com/w06rup3vu06"><img src="./img/facebook.png" alt="Facebook"/></a>
+            <a href="https://www.instagram.com/w06rup3vu06/"><img src="./img/instagram.png" alt="Instagram"/></a>
+            <a href="#"><img src="./img/line.png" alt="Line"/></a>
+            <i id="visitor" class="fa fa-eye">
+              {{ visitor }}
+            </i>
+          </div>
+        </div>
+        <!-- |文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始|文章開始| -->
+        <!-- =========================[C++]基礎入門========================= -->
+        <div id="1080912_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-12</span>
+            </div>
+            <h3>[C++]基礎入門</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>C++的副檔名為*.cpp，您可以使用任一種純文字編輯程式來編輯C++程式。</p>
+            <p>下面是一個初始化的程式碼</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              首先看到程式的第1行：
+              <li>#include是巨集(Macro)前置處理器指令(Preprocessor directive)（詳情之後會介紹）</li>
+              <li>
+                它告訴編譯器(Compiler)這個程式必須使用到iostream這個表頭檔(Header
+                file)中的一些函式(Function)與類別(Class)定義，以正確的編譯程式中所使用到的程式庫函式。
+              </li>
+              <li>簡單的說您所要使用到的主控台輸入輸出功能就定義在這個檔案中。</li>
+            </ul>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              接下來看到程式的第2行~第6行：
+              <li>主函式(Main function)的部份，在C++程式中，程式的進入點(Entry point)是main()這個函式。</li>
+              <li>其中int表示這個程式執行完畢之後會傳回一個整數(Integer)。</li>
+              <li>括號的位置可設置參數列。</li>
+              <li>大括號的位置就是程式邏輯撰寫的地方。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  // 擺要撰寫得程式
+
+}</pre
+            >
+            <h5>☛範例： Hello World!</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              程式的第4行：
+              <li>std代表標準輸出。</li>
+              <li>使用「&lt;&lt;」連接參數。</li>
+              <li>使用「" "」為定義「字串」字面常數，將要顯示的字包起來。</li>
+              <li>「\n」功能同等Enter鍵。</li>
+              <li>在撰寫「敘述句」結尾時要加上「;」代表此行程式撰寫結束</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+            
+  std &lt;&lt; cout &lt;&lt; "Hello World!\n";
+            
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+  輸出結果：
+  Hello World!
+   </pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              下面教兩個技巧方法：
+              <li>使用全局命名空間：這是避免全局命名衝突問題，當然你們現在寫的專案規模還沒有很大，所以無法理解，另外就是可以不用一直打std</li>
+              <li>在每行結尾輸入endl，它同等「\n」的意思，在程式撰寫上更靈活</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std; 
+int main() { 
+
+  cout &lt;&lt; "Hello World!" &lt;&lt; endl;
+  cout &lt;&lt; "Hello C++!";
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+Hello World!
+Hello C++!</pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              結果輸出方法有兩個：
+              <li>cout：是ostream對象，配合「&lt;&lt;」使用，通過運算符重仔實現，使用上相對安全。</li>
+              <li>printf：是一個函數，沒有類型檢查，需要告訴其輸出格式，在使用上不是很安全，但相對靈活。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std; 
+int main() { 
+  
+  cout &lt;&lt; "Hello World!" &lt;&lt; endl;
+  printf("Hello C++!");
+  printf("%d\n", 123);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+Hello World!
+Hello C++!
+123</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]資料型態========================= -->
+        <div id="1080912_02">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-12</span>
+            </div>
+            <h3>[C++]資料型態</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>由於資料的型態各不相同，在儲存時所需要的容量不一，不同的 資料必須要配給不同的空間大小來儲存</p>
+            <p>下列出現「word」一詞先想像為一個單位用量，在32位元機器上通常一個word是4個位元組。</p>
+            <p style="color: red">下列只顯示目前有上課進度有教到的，未來有新增在做更新。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              常見的資料型態如下：
+              <li>整數：目前只有教到int(未來有教再新增)，int表示一個word。</li>
+              <li>浮點數：用來表示小數值，可以區分為float、double，float的長度為一個word，double的長度為二個word。</li>
+              <li>布林：用來表示布林數，在程式中佔一個位元組，可以使用true或false 字面常量(Literal constant)來表示，實際上的數值則分別對應於1與0</li>
+            </ul>
+            <p>以上的資料型態在記憶體中所佔有的大小依平台系統而有所差異，最好的作法是使用sizeof()運算子，它可以告訴您確實的記憶體大小。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+  
+  cout &lt;&lt; "int\t" &lt;&lt; sizeof(int) &lt;&lt; endl; 
+  cout &lt;&lt; "float\t" &lt;&lt; sizeof(float) &lt;&lt; endl; 
+  cout &lt;&lt; "double\t" &lt;&lt; sizeof(double) &lt;&lt; endl; 
+  
+  cout &lt;&lt; "sizeof(bool)\t" &lt;&lt; sizeof(bool) &lt;&lt; endl;
+  cout &lt;&lt; "sizeof(true)\t" &lt;&lt; sizeof(true) &lt;&lt; endl;
+  cout &lt;&lt; "sizeof(false)\t" &lt;&lt; sizeof(false) &lt;&lt; endl;
+  cout &lt;&lt; "true\t" &lt;&lt; static_cast&lt;int&gt;(true) &lt;&lt; endl;
+  cout &lt;&lt; "false\t" &lt;&lt; static_cast&lt;int&gt;(false);
+  
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+int 4
+float 4
+double  8
+sizeof(bool)  1
+sizeof(true)  1
+sizeof(false) 1
+true  1
+false 0</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]變數========================= -->
+        <div id="1080912_03">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-12</span>
+            </div>
+            <h3>[C++]變數</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>變數（Variable）提供一個有名稱的記憶體儲存空間，一個變數關係至一個資料型態、一個變數本身的值與一個變數的位址值。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              在C++中要使用變數，必須先宣告變數名稱與資料型態
+              <li>首先定義資料型態，我們會使用到「宣告工具」，如下：int、double。</li>
+              <li>接下來命名變數名稱，命名時盡量與此數值用途有關有意義的名詞。</li>
+              <li>大小寫之間是有差異的，視為兩個不同的變數名稱，如：Num不等於num。</li>
+              <li>若有兩個字以上可使用蛇式：current_temp_c，或者駝峰式CurrentTempC命名</li>
+              <li>不可以使用數字作為開頭。不可以使用一些特殊字元，像是*&^%之類的字元。變數名稱不可以與C++內定的關鍵字(Keyword)同名</li>
+              <li>可以先宣告空間(第4行)，在賦值(第5行)。或者宣告完當下賦值(第7行)</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  int intNum;      // 宣告一個整數變數
+  intNum = 3;
+
+  double dblNum = 3.1445926;   // 宣告一個倍精度浮點數變數
+
+}</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]終端機輸入&輸出========================= -->
+        <div id="1080912_04">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-12</span>
+            </div>
+            <h3>[C++]終端機輸入&輸出</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>在C++中輸入輸出是由標準函式庫(library)中的iostream library提供，這也就是為何您要在程式的一開頭終是加上第1行那串 #include &lt;iostream&gt;。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  // 程式碼輸入區
+  
+}</pre
+            >
+            <h5>◎ 標準輸出</h5>
+            <p>
+              將訊息輸出至終端機，稱之為「標準輸出」(Stand
+              output)，C++藉由iostream物件cout將訊息輸出至終端機，&lt;&lt;運算子將一個指定的訊息或數值指引至標準輸出物件上。
+            </p>
+            <ul>
+              <li>資料往哪邊送，箭頭就會指向哪個地方。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  cout &lt;&lt; "Hello World!";
+  
+}</pre
+            >
+            <h5>◎ 標準錯誤</h5>
+            <p>
+              使用iostream物件cerr，稱之為「標準錯誤」(Standard
+              error)，與標準輸出不同的是，立即顯示指定的（錯誤）訊息給使用者知道，即使您指定程式將結果重新導向至檔案，cerr輸出串流的訊息並不會被重新導向，而仍會顯示在指定的顯示裝置上。
+            </p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  cout &lt;&lt; "Hello World!";                  // 輸出Hello World!
+  main &gt;&gt; result.txt                       // 把Hello World!輸出導向result.txt
+  cerr &lt;&lt; "Sorry! World!" &lt;&lt; endl;         // 顯示錯誤(此時打開result.txt會發現內部不會有Sorry! World!的輸出文字)
+  
+}</pre
+            >
+            <h5>◎ 標準輸入</h5>
+            <p>使用「標準輸入」(Standard input)的iostream物件cin，並使用&gt;&gt;運算子將輸入的訊息指定給變數</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std; 
+int main() { 
+  
+  int number = int();
+  cout &lt;&lt; "請輸入數字: "; 
+  cin &gt;&gt; number;
+  cout &lt;&lt; "輸入的數字: " &lt;&lt; number &lt;&lt; endl;
+  
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入數字: 10
+輸入的數字: 10</pre
+            >
+            <h5>◎ 輸出美觀<span style="color: red;font-size: 12px;"> (1080926補充。)</span></h5>
+            <p>在輸出的時候有時候為了美觀，會數值的前後加上空格達到對齊效果。</p>
+            <p>一、總寬度</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int n = 100;
+  int m = 10000;
+  printf("%d\n", n);
+  printf("%5d\n", n); // 總寬度為5，自動空3格
+  printf("%d\n", m);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+100
+  100
+10000</pre
+            >
+            <p>二、小數點後面X位數</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  float x = 3.2;
+    printf("%.3f\n", x);  // 小數點後面3位數
+    printf("%8.5f\n", x); // 總長度為8，小數點後面5位數
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+3.200
+ 3.20000</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]算術運算========================= -->
+        <div id="1080912_05">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-12</span>
+            </div>
+            <h3>[C++]算術運算</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>
+              在C++中提供與算術相關的加(+)、減(-)、乘(*)、除(/)的運算子，另外還有一個也很常用的餘除運算子(%)或稱模數(Modulus)運算子，這類以數學運算為主的運算子，稱之為「算術運算子」(Arithmetic
+              operator)。
+            </p>
+            <h5>◎ 四則運算</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+  
+  printf("%d\n", n + 10);  // 110
+  printf("%d\n", n - 10);  // 90
+  printf("%d\n", n * 10);  // 1000
+  printf("%d\n", n / 10);  // 10
+  printf("%d\n", n % 10);  // 0
+  
+}</pre
+            >
+            <h5>◎ 運算規則</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              其計算方法跟在現實中數學算是一樣：
+              <li>由左至右進行運算。</li>
+              <li>先乘除後加減。</li>
+              <li>必要時加上括號表示運算的先後順序。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+  
+  cout &lt;&lt; (1+5*3)/4 &lt;&lt; endl;  // 4
+  
+}</pre
+            >
+            <h5>◎ 餘除運算子(%)</h5>
+            <p>用來計算除法後的餘數，通常來作循環計數之用。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  couter = (counter + 1) % 10; // 由0計數至9不斷循環
+  
+}</pre
+            >
+            <h5>☛範例： 四則運算計算機</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  double num1, num2, ans;
+  char op;
+  cout &lt;&lt; "請輸入數字：" &lt;&lt; endl;
+  cin &gt;&gt; num1;
+  cout &lt;&lt; "請輸入運算符號：\n(  加法：+   減法：-   乘法：*   除法：/  )" &lt;&lt; endl;
+  cin &gt;&gt; op;
+  cout &lt;&lt; "請輸入數字：" &lt;&lt; endl;
+  cin &gt;&gt; num2;
+  switch (op) {
+    case '+':
+      ans = num1 + num2;
+      break;
+    case '-':
+      ans = num1 - num2;
+      break;
+    case '*':
+      ans = num1 * num2;
+      break;
+    case '/':
+      ans = num1 / num2;
+      break;
+    }
+  cout &lt;&lt; "\n答案是：" &lt;&lt; ans &lt;&lt; endl;
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入數字：
+5
+請輸入運算符號：
+(  加法：+   減法：-   乘法：*   除法：/  )
++
+請輸入數字：
+2
+
+答案是：7</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]關係運算&條件運算========================= -->
+        <div id="1080919_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]關係運算&條件運算</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 關係運算子</h5>
+            <p>C++中也提供了「關係運算子」(Relational operator)或「比較運算子」(Comparison operator)。</p>
+            <ul>
+              <li>大於( &gt; )</li>
+              <li>不小於( &gt;= )</li>
+              <li>小於( &lt; )</li>
+              <li>不大於( &lt;= )</li>
+              <li>等於 ( == )</li>
+              <li>不等於( != )</li>
+            </ul>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>所有非零的數值在作為條件式時都被視為true。</li>
+              <li>這裡有個地方會有人常常犯錯，「x == y」是有兩個變數x與y要比較是否相等；「x = y」是將y的值指定給x，寫的時候務必要檢查。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  cout &lt;&lt; "10 &gt; 5\t\t" &lt;&lt; (10 &gt; 5) &lt;&lt; endl;
+  cout &lt;&lt; "10 &gt;= 5\t\t" &lt;&lt; (10 &gt;= 5) &lt;&lt; endl;
+  cout &lt;&lt; "10&lt;&lt; 5\t\t" &lt;&lt; (10 &lt; 5) &lt;&lt; endl;
+  cout &lt;&lt; "10&lt;&lt;= 5\t\t" &lt;&lt; (10 &lt;= 5) &lt;&lt; endl;
+  cout &lt;&lt; "10 == 5\t\t" &lt;&lt; (10 == 5) &lt;&lt; endl;
+  cout &lt;&lt; "10 != 5\t\t" &lt;&lt; (10 != 5) &lt;&lt; endl;
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+10 &gt; 5          1
+10 &gt;= 5        1
+10 &lt; 5          0
+10 &lt;= 5        0
+10 == 5        0
+10 != 5         1</pre
+            >
+            <h5>◎ 條件運算子</h5>
+            <p>「條件運算子」（Conditional operator）的傳回值依條件式的結果而定，如果條件式的結果為true，則傳回冒號前的值，若為false，則傳回冒號後的值。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int score = 0; 
+
+  cout &lt;&lt; "輸入學生分數："; 
+  cin &gt;&gt; score; 
+  cout &lt;&lt; "該生是否及格？" &lt;&lt; (score &gt;= 60 ? 'Y' : 'N') &lt;&lt; endl; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入學生分數：60
+該生是否及格？Y</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]邏輯運算&位元運算========================= -->
+        <div id="1080919_02">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]邏輯運算&位元運算</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 邏輯運算子</h5>
+            <p>在C++中也提供「邏輯運算子」(Logical operator)。</p>
+            <ul>
+              <li>且 ( && )</li>
+              <li>或 ( || )</li>
+              <li>反相 ( ! )</li>
+            </ul>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              下面三段程式分別會輸出1、0與1，也就是分別表示true、false與true三種狀況。
+              <li>「&&」運算中，如果左邊的式子已經被評斷為false，則可立即判斷整個式子為false，因而右邊的式子就不會再評斷。</li>
+              <li>「||」運算中如果左邊的式子已經被評斷為true，則可以判斷整個式子為true，因而右邊的式子就不會再評斷。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int num = 75;
+  cout &lt;&lt;  (num &gt; 70 && num &lt; 80) &lt;&lt; endl;
+  cout &lt;&lt; (num &gt; 80 || num &lt; 75) &lt;&lt; endl;
+  cout &lt;&lt; !(num &gt; 80 || num &lt; 75) &lt;&lt; endl;
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+1
+0
+1</pre
+            >
+            <h5>◎ 位元運算子</h5>
+            <p>在C++中提供「位元運算子」(Bitwise operator)，分別是AND(&)、OR(|)、NOT(!)、XOR(^)與補數(~)。</p>
+            <ul>
+              <li>AND ( & )</li>
+              <li>OR ( | )</li>
+              <li>NOT ( ! )</li>
+              <li>XOR ( ^ )</li>
+              <li>補數 ( ~ )</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  cout &lt;&lt; "AND運算：" &lt;&lt; endl; 
+  cout &lt;&lt; "0 AND 0\t\t" &lt;&lt; (0 & 0) &lt;&lt; endl; 
+  cout &lt;&lt; "0 AND 1\t\t" &lt;&lt; (0 & 1) &lt;&lt; endl; 
+  cout &lt;&lt; "1 AND 0\t\t" &lt;&lt; (1 & 0) &lt;&lt; endl; 
+  cout &lt;&lt; "1 AND 1\t\t" &lt;&lt; (1 & 1) &lt;&lt; endl; 
+
+  cout &lt;&lt; "OR運算：" &lt;&lt; endl; 
+  cout &lt;&lt; "0 OR 0\t\t" &lt;&lt; (0 | 0) &lt;&lt; endl; 
+  cout &lt;&lt; "0 OR 1\t\t" &lt;&lt; (0 | 1) &lt;&lt; endl; 
+  cout &lt;&lt; "1 OR 0\t\t" &lt;&lt; (1 | 0) &lt;&lt; endl; 
+  cout &lt;&lt; "1 OR 1\t\t" &lt;&lt; (1 | 1) &lt;&lt; endl; 
+
+  cout &lt;&lt; "XOR運算：" &lt;&lt; endl; 
+  cout &lt;&lt; "0 XOR 0\t\t" &lt;&lt; (0 ^ 0) &lt;&lt; endl; 
+  cout &lt;&lt; "0 XOR 1\t\t" &lt;&lt; (0 ^ 1) &lt;&lt; endl; 
+  cout &lt;&lt; "1 XOR 0\t\t" &lt;&lt; (1 ^ 0) &lt;&lt; endl; 
+  cout &lt;&lt; "1 XOR 1\t\t" &lt;&lt; (1 ^ 1) &lt;&lt; endl; 
+
+  cout &lt;&lt; "NOT運算：" &lt;&lt; endl; 
+  cout &lt;&lt; "NOT 0\t\t" &lt;&lt; (!0) &lt;&lt; endl; 
+  cout &lt;&lt; "NOT 1\t\t" &lt;&lt; (!1) &lt;&lt; endl; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+AND運算：
+0 AND 0         0
+0 AND 1         0
+1 AND 0         0
+1 AND 1         1
+OR運算：
+0 OR 0          0
+0 OR 1          1
+1 OR 0          1
+1 OR 1          1
+XOR運算：
+0 XOR 0         0
+0 XOR 1         1
+1 XOR 0         1
+1 XOR 1         0
+NOT運算：
+NOT 0           1
+NOT 1           0</pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              總結一下知識
+              <li>邏輯運算子與位元運算子也是很常被混淆，「&&」為邏輯運算，而「&」為位元運算，「||」為邏 輯運算，而「|」為位元運算。</li>
+              <li>位元運算是逐位元運算的，例如：10010001與01000001作AND運算，是一個一個位元對應運算，答案就是00000001。</li>
+              <li>補數運算是將所有的位元0變1，1變0，例如00000001經補數運算就會變為11111110。</li>
+            </ul>
+            <p>位元運算對初學者來說的確較不常用，但如果用的洽當的話，可以增進不少程式效率。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              下面這個程式原理：
+              <li>奇數的數值若以二進位來表示，其最右邊的位元必為1，而偶數最右邊的位元必為0。</li>
+              <li>
+                使用1來與輸入的值作AND運算，由於
+                1除了最右邊的位元為1之外，其它位元都會是0，與輸入數值AND運算的結果，只會留下最右邊位元為0或為的結果，其它部份都被0
+                AND運算遮掉了，這就是所謂「位元遮罩」。
+              </li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int input = 0; 
+
+  cout &lt;&lt; "輸入正整數："; 
+  cin &gt;&gt; input; 
+  cout &lt;&lt; "輸入為奇數？" &lt;&lt; (input&1 ? 'Y' : 'N') &lt;&lt; endl; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入正整數：5
+輸入為奇數？Y</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]if條件判斷========================= -->
+        <div id="1080919_03">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]if條件判斷</h3>
+          </div>
+          <div class="artContent mt-1">
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              C++提供了if 條件判斷陳述
+              <li>就是當條件式成立時（true），則執行陳述句一，要不然就執行陳述句二。</li>
+              <li>如果條件式不成立時並不想作任何事，則else可以 省略。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  // 第一種縮排方法
+  if ( /*條件式*/ ) cout &lt;&lt; "陳述句一";
+  else  cout &lt;&lt; "陳述句二";
+
+  // 第二種縮排方法
+  if ( /*條件式*/ ) 
+    cout &lt;&lt; "陳述句一";
+  else
+    cout &lt;&lt; "陳述句二";
+
+}</pre
+            >
+            <p>在 if 後如果有兩個以上陳述句，稱之為「複合陳述句」(compound statement)，此時您必須使用{ }將複合陳述句包括起來。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  if ( /*條件式*/ ) {
+    cout &lt;&lt; "陳述句一";
+    cout &lt;&lt; "陳述句二";
+  }
+  else {
+    cout &lt;&lt; "陳述句三";
+    cout &lt;&lt; "陳述句四";
+  }
+
+}</pre
+            >
+            <p>
+              當然人生一個問題總是會面臨不同的選擇，如果條件式一不滿足，就會執行條件式二的測試，如果滿足就執行條件式二，以此類推，若都不是則執行else中的陳述
+            </p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  if ( /*條件式一*/ ){
+    cout &lt;&lt; "陳述句一";
+    cout &lt;&lt; "陳述句二";
+  }
+  else if ( /*條件式二*/ ){
+    cout &lt;&lt; "陳述句三";
+    cout &lt;&lt; "陳述句四";
+  }
+  else if ( /*條件式三*/ ){
+    cout &lt;&lt; "陳述句五";
+    cout &lt;&lt; "陳述句六";
+  }
+  else {
+    cout &lt;&lt; "陳述句五";
+    cout &lt;&lt; "陳述句六";
+  }
+
+}</pre
+            >
+            <h5>☛範例：使用if語句處理學生的成績等級問題</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int score = 0; 
+
+  cout &lt;&lt; "輸入分數："; 
+  cin &gt;&gt; score; 
+
+  if(score &gt;= 90) 
+    cout &lt;&lt; "得A" &lt;&lt; endl; 
+  else if(score &gt;= 80 && score &lt; 90) 
+    cout &lt;&lt; "得B" &lt;&lt; endl; 
+  else if(score &gt;= 70 && score &lt; 80) 
+    cout &lt;&lt; "得C" &lt;&lt; endl; 
+  else if(score &gt;= 60 && score &lt; 70) 
+    cout &lt;&lt; "得D" &lt;&lt; endl; 
+  else 
+    cout &lt;&lt; "得E(不及格)" &lt;&lt; endl; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入分數：60
+得D</pre
+            >
+            <p>當然新的抉擇就會遇到新的問題，所以if語法內還可以有if語法，在多重關卡設置後，就可以處裡更多複雜的事情。</p>
+          </div>
+        </div>
+        <!-- =========================[C++]switch條件判斷========================= -->
+        <div id="1080919_04">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]switch條件判斷</h3>
+          </div>
+          <div class="artContent mt-1">
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              switch是C++提供的條件判斷陳述式，它只能比較數值或字元，不過別以為這樣它就比if 來得沒用，使用適當的話，它可比if判斷式來得有效率
+              <li>首先看看switch的括號，當中置放您要取出數值的變數。</li>
+              <li>取出數值之後，程式會開始與case中所設定的數字或字元作比對，如果符合就執行以下的陳述句。</li>
+              <li>直到遇到break後離開switch區塊。</li>
+              <li>如果沒有符合的數值或字元，則會執行default後的陳述句，default不一定需要，您可以省去這個部份。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  switch ( /*變數名稱或運算式*/ ) {
+    case /*符合數字或字元*/ :
+      cout &lt;&lt; "陳述句一";
+      break;
+    case /*符合數字或字元*/ :
+      cout &lt;&lt; "陳述句二";
+      break;
+    default:
+      cout &lt;&lt; "陳述句三";
+  }
+
+}</pre
+            >
+            <h5>☛範例： 使用switch語句處理學生的成績等級問題</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int score = 0; 
+  int level = 0; 
+
+  cout &lt;&lt; "輸入分數："; 
+  cin &gt;&gt; score; 
+  level = score/10; 
+
+  switch(level) { 
+    case 10: 
+    case 9: 
+      cout &lt;&lt; "得A" &lt;&lt; endl; 
+      break; 
+    case 8: 
+      cout &lt;&lt; "得B" &lt;&lt; endl; 
+      break; 
+    case 7: 
+      cout &lt;&lt; "得C" &lt;&lt; endl; 
+      break; 
+    case 6: 
+      cout &lt;&lt; "得D" &lt;&lt; endl; 
+      break; 
+    default: 
+      cout &lt;&lt; "得E(不及格)" &lt;&lt; endl; 
+  } 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入分數：85
+得B</pre
+            >
+            <p>if 與 switch 兩者可以搭配著靈活使用。</p>
+          </div>
+        </div>
+        <!-- =========================[C++]遞增、遞減、指定運算========================= -->
+        <div id="1080919_05">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]遞增、遞減、指定運算</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 遞增運算子&遞減運算子</h5>
+            <p>C++的「遞增運算子」(Increment operator)與「遞減運算子」(Decrement operator)，當它們撰寫在變數之前時，其作用就相當於將變數遞增1與遞減1。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  ++i;    // i = i + 1;
+  --i;    // i = i - 1;
+
+}</pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              將遞增或遞減運算子撰寫在變數之前或變數之後，但其實兩者是有差別的：
+              <li>將遞增（遞減）運算子撰寫在變數前時，表示先將變數的值加（減）1，然後再傳 回變數的值。</li>
+              <li>將遞增（遞減）運算子撰寫在變數之後，表示先傳回變數值，然後再對變數加（減）1。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int i = 0;
+  int num = 0;
+  num = ++i;    // 相當於 i = i + 1; num = i;
+  cout &lt;&lt; num &lt;&lt; endl; // 得到：1
+  num = --i;    // 相當於 i = i - 1; num = i;
+  cout &lt;&lt; num &lt;&lt; endl; // 得到：0
+
+  int i = 0;
+  int num = 0;
+  num = i++;     // 相當於 num = i; i = i + 1;
+  cout &lt;&lt; num &lt;&lt; endl; // 得到：0
+  num = i--;     // 相當於 num = i; i = i - 1;
+  cout &lt;&lt; num &lt;&lt; endl; // 得到：1
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+1
+0
+0
+1</pre
+            >
+            <h5>◎ 指定運算子</h5>
+            <p>「指定運算子」(Assignment operator)，到目前為止我們只看過一個指定運算子，也就是「=」這個運算子，事實上指定運算子還有以下的幾個：</p>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">運算子</th>
+                  <th scope="col">例子</th>
+                  <th scope="col">說明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>+=</td>
+                  <td>a += b</td>
+                  <td>a = a + b</td>
+                </tr>
+                <tr>
+                  <td>-=</td>
+                  <td>a -= b</td>
+                  <td>a = a - b</td>
+                </tr>
+                <tr>
+                  <td>*=</td>
+                  <td>a *= b</td>
+                  <td>a = a * b</td>
+                </tr>
+                <tr>
+                  <td>/=</td>
+                  <td>a /= b</td>
+                  <td>a = a / b</td>
+                </tr>
+                <tr>
+                  <td>%=</td>
+                  <td>a %= b</td>
+                  <td>a = a % b</td>
+                </tr>
+                <tr>
+                  <td>&=</td>
+                  <td>a &= b</td>
+                  <td>a = a & b</td>
+                </tr>
+                <tr>
+                  <td>|=</td>
+                  <td>a |= b</td>
+                  <td>a = a | b</td>
+                </tr>
+                <tr>
+                  <td>^=</td>
+                  <td>a ^= b</td>
+                  <td>a = a ^ b</td>
+                </tr>
+                <tr>
+                  <td>&lt; &lt;=</td>
+                  <td>a &lt; &lt;= b</td>
+                  <td>a = a &lt; &lt; b</td>
+                </tr>
+                <tr>
+                  <td>&gt;&gt;=</td>
+                  <td>a &gt;&gt;= b</td>
+                  <td>a = a &gt;&gt; b</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- =========================[C++]for迴圈========================= -->
+        <div id="1080919_06">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]for迴圈</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>在C++中所提供的重複性計算陳述之一是 for 迴圈式</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  for ( /*初始變數*/; /*判斷式*/; /*遞增式*/) {
+    cout &lt;&lt; "陳述句一";
+    cout &lt;&lt; "陳述句二";
+  }
+
+}</pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              以下是一個簡單的程式流程
+              <li>首先看到for關鍵字進入程序。</li>
+              <li>看到int關鍵字宣告變數i，並且賦值0。此時for程序初始變數為0。</li>
+              <li>執行for程序第二步驟：判斷式，i為0確實小於10，判斷式為true執行下方陳述句。</li>
+              <li>i為0，輸出「 0」。</li>
+              <li>因為遞增式為i++，意思是程序執行完才做遞增，所以此時執行i=i+1。</li>
+              <li>程序跳至判斷式，i為1確實小於10，判斷式為true執行下方陳述句，跳到第4點，直到i等於10時，跳出for程序。</li>
+              <li>如果陳述句只有一個，也就是非複合陳述句，{ } 可以省略不寫。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  for(int i = 0; i &lt; 10; i++) 
+        cout &lt;&lt; " " &lt;&lt; i; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+ 0 1 2 3 4 5 6 7 8 9</pre
+            >
+            <h5>☛範例： 使用for迴圈輸出重複文字</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt; 10; i++)
+    {
+        for (int j = 0; j &lt; 10; j++)
+        {
+            printf("x");
+        }
+        printf("\n");
+    }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx</pre
+            >
+            <h5 id="exam_01" style="color: red">➣考題： for迴圈輸出三角形</h5>
+            <h6>題型一：右正三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt; 5; i++) {
+    for (int j = 0; j &lt;= i; j++) {
+        printf("x");
+    }
+    printf("\n");
+  }
+  
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+x
+xx
+xxx
+xxxx
+xxxxx</pre
+            >
+            <h6>題型二：右倒三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt; 5; i++) {
+    for (int j = i; j &lt; 5; j++) {
+      printf("x");
+    }
+    printf("\n");
+  }
+
+  //另一種寫法
+  for (int i = 0; i &lt; 5; i++) {
+    for (int j = 5; j &gt; i; j--) {
+      printf("x");
+    }
+    printf("\n");
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+xxxxx
+xxxx
+xxx
+xx
+x</pre
+            >
+            <h6>題型三：左正三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt; 5; i++) {
+    for (int j = 0; j &lt;= i; j++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+*
+**
+***
+****
+*****</pre
+            >
+            <h6>題型四：左倒三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt;= 5; i++) {
+    for (int j = 1; j &lt;= i; j++) {
+      printf(" ");
+    }
+    for (int n = 0; n &lt; 5 - i; n++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+*****
+ ****
+  ***
+   **
+    *</pre
+            >
+            <h6>題型五：正三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int i = 0; i &lt;= 4; i++) {
+    for (int j = 0; j &lt;= 4 - i; j++) {
+      printf(" ");
+    }
+    for (int k = 0; k &lt;= i * 2; k++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+     *
+    ***
+   *****
+  *******
+ *********</pre
+            >
+            <h6>題型六：倒三角形</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+int main() { 
+
+  for (int m = 0; m &lt;= 4; m++) {
+    for (int n = 0; n &lt;= m; n++) {
+      printf(" ");
+    }
+    for (int a = 0; a &lt; 9 - m * 2; a++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+ *********
+  *******
+   *****
+    ***
+     *</pre
+            >
+            <h5 id="exam_02" style="color: red">➣考題： 九九乘法表</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+for (int i = 2; i  &lt; 10; i++) {
+  for (int j = 2; j  &lt; 10; j++) {
+    printf("%dX%d=%2d\t", j, i, i * j);
+  }
+  printf("\n");
+}
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+2X2= 4	3X2= 6	4X2= 8	5X2=10	6X2=12	7X2=14	8X2=16	9X2=18	
+2X3= 6	3X3= 9	4X3=12	5X3=15	6X3=18	7X3=21	8X3=24	9X3=27	
+2X4= 8	3X4=12	4X4=16	5X4=20	6X4=24	7X4=28	8X4=32	9X4=36	
+2X5=10	3X5=15	4X5=20	5X5=25	6X5=30	7X5=35	8X5=40	9X5=45	
+2X6=12	3X6=18	4X6=24	5X6=30	6X6=36	7X6=42	8X6=48	9X6=54	
+2X7=14	3X7=21	4X7=28	5X7=35	6X7=42	7X7=49	8X7=56	9X7=63	
+2X8=16	3X8=24	4X8=32	5X8=40	6X8=48	7X8=56	8X8=64	9X8=72	
+2X9=18	3X9=27	4X9=36	5X9=45	6X9=54	7X9=63	8X9=72	9X9=81</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]while迴圈========================= -->
+        <div id="1080919_07">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]while迴圈</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>C++提供while迴圈式，它根據您所指定的條件式來判斷是否執行迴圈本體</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>
+                while有些像是沒有起始陳述與終止陳述的for迴圈，它通常用於重複性的動作，而停止條件未知何時發生的情況，例如一個使用者輸入介
+                面，使用者可能輸入10次，也可能輸入20次，這時迴圈停止的時機是未知的。
+              </li>
+              <li>如果迴圈本體只有一個陳述句，則while的{ }可以省略不寫。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  while ( /*條件式*/ ) {
+    cout &lt;&lt; "陳述句一";
+    cout &lt;&lt; "陳述句二";
+  }
+
+}</pre
+            >
+            <h5>☛範例： 計算輸入成績平均</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int score = 0; 
+  int sum = 0; 
+  int count = -1; 
+
+  while(score != -1) { 
+    count++; 
+    sum += score; 
+    cout &lt;&lt; "輸入分數(-1結束)："; 
+    cin &gt;&gt; score; 
+  } 
+
+  cout &lt;&lt; "平均：" &lt;&lt; static_cast&lt;double&gt;(sum) / count &lt;&lt; endl; 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入分數(-1結束)：10
+輸入分數(-1結束)：20
+輸入分數(-1結束)：30
+輸入分數(-1結束)：40
+輸入分數(-1結束)：50
+輸入分數(-1結束)：-1
+平均：30</pre
+            >
+            <h5>◎ 無窮迴圈</h5>
+            <p>事實上很多地方都用到的到無窮迴圈，例如遊戲設計中對使用者輸入裝置的輪詢（poll），或是動畫程式的播放。</p>
+            <p>無窮迴圈可以由自己迴圈中的某個條件式來結束，也可以由外部程式的終止或函式呼叫的終止來結束。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  while ( /*條件式*/ ) {
+    cout &lt;&lt; "陳述句一";
+    if( /*條件式*/ ){
+      break;  // 跳離迴圈
+    }
+    ....
+  }
+
+}</pre
+            >
+            <h5>◎ do while 測式迴圈</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>while迴圈稱之為「前測式迴圈」，因為它在迴圈執行前就會進行條件判斷。</li>
+              <li>do while稱之「後測式迴圈」，它會先執行迴圈本體，然後再進行條件判斷。</li>
+              <li>注意while後面是以分號（;）作為結束，這個很常被忽略。</li>
+              <li>由於do while會先執行迴圈，所以它通常用於進行一些初始化或介面溝通的動作。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  do {
+    cout &lt;&lt; "陳述句一";
+    cout &lt;&lt; "陳述句二";
+    ....
+  } while( /*條件式*/ );
+
+}</pre
+            >
+            <h5>☛範例： 連續判斷數字奇或偶</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+   int input = 0; 
+    bool replay = false; 
+
+    do { 
+      cout &lt;&lt; "輸入整數值："; 
+      cin &gt;&gt; input; 
+      cout &lt;&lt; "輸入數為奇數？" &lt;&lt; ((input % 2) ? 'Y': 'N') &lt;&lt; "\n"; 
+      cout &lt;&lt; "繼續(1:繼續 0:結束)？"; 
+      cin &gt;&gt; replay; 
+    } while(replay); 
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入整數值：11
+輸入數為奇數？Y
+繼續(1:繼續 0:結束)？0</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]break & continue & goto========================= -->
+        <div id="1080919_08">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-19</span>
+            </div>
+            <h3>[C++]break & continue & goto</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>break可以離開目前switch、for、while、do while的區塊，並前進至區塊後下一個陳述句。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>在switch中主要用來結束陳述句進行至下一個case的比對。</li>
+              <li>在for、while與do while中，主要用於中斷目前的迴圈執行。</li>
+              <li>如果break出現並不是內含在for、while迴圈中或switch陳述中，則會發生編譯錯誤</li>
+            </ul>
+            <h5>◎ break & continue</h5>
+            <p>
+              這兩個類似，主要使用於迴圈，不同的是break會結束區塊的執行，而continue只會結束接下來區塊中的陳述句，並跳回迴圈區塊的開頭繼續下一個迴圈，而不是離開迴圈。
+            </p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>第6行~第11行程式會顯示i = 1到4，因為當 i 等於5時就會執行break而離開迴圈，顯示「結束」。</li>
+              <li>
+                第14行~第19行程式會顯示1到4，與6到9，當 i 等於5時，會執行continue直接結束此次迴圈，然後從區塊開頭頭執行下一次迴圈，所以「5」並沒有被顯示。
+              </li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  //break
+  for(int i = 1; i &lt; 10; i++) {
+    if(i == 5)
+      break;
+
+    cout &lt;&lt; "i = " &lt;&lt; i &lt;&lt; endl;
+  }
+  
+  //continue
+  for(int i = 1; i &lt; 10; i++) {
+    if(i == 5)
+      continue;
+
+    cout &lt;&lt; "i = " &lt;&lt; i &lt;&lt; endl;
+  }
+  
+   cout &lt;&lt; "結束"" &lt;&lt; endl;
+
+}</pre
+            >
+            <h5>◎ goto</h5>
+            <p>goto可以在程式中任意跳躍，跳躍前必須先設定好目的地，跳躍時必須指定目的地。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>其中start就是goto目的地的一個標籤(Label)，後面使用冒號。</li>
+              <li>標籤可以出現在程式的任一個地方。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int input = 0; 
+
+begin: 
+
+  cout &lt;&lt; "輸入一數："; 
+  cin &gt;&gt; input; 
+
+  if(input == 0) 
+    goto error; 
+
+    cout &lt;&lt; "100 / " &lt;&lt; input &lt;&lt; " = " &lt;&lt; static_cast &lt;double;&gt;(100) / input &lt;&lt; endl; 
+
+    return 0; 
+
+error: 
+  cout &lt;&lt; "除數不可為0" &lt;&lt; endl; 
+  goto begin;
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+輸入一數：0
+除數不可為 0
+輸入一數：10
+100 / 10 = 10</pre
+            >
+            <p>
+              goto是一個很方便，但是最不被建議使用的語法，濫用它的話會破壞程式的架構、使得程式的邏輯難以trace，多跳個幾次之後，這個程式的邏輯馬上會讓您變得混亂不堪，根據以上方功能，以下是正常撰寫範例：
+            </p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int input = 0; 
+
+  while(true) { 
+    cout &lt;&lt; "輸入一數："; 
+    cin &gt;&gt; input; 
+
+    if(input != 0) { 
+      cout &lt;&lt; "100 / " &lt;&lt; input &lt;&lt; " = " &lt;&lt; static_cast&lt;double&gt;(100) / input &lt;&lt; endl; 
+      break; 
+    } 
+    cout &lt;&lt; "除數不可為0"; 
+  } 
+
+}</pre
+            >
+            <p>總之，最好先忘了goto的存在，多培養結構化程式設計的思考，習慣養成之後就不會再想要用到goto了。</p>
+          </div>
+        </div>
+        <!-- =========================[C++]字面常量========================= -->
+        <div id="1080926_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-26</span>
+            </div>
+            <h3>[C++]字面常量</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 字面常量</h5>
+            <p>在程式中寫下1、1.0、3.14159這樣的數值，這類數值稱之為「字面常量」(Literal constant)</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              整數字面常量可以用8進位、10進位與16進位來表示：
+              <li>一般習慣使用10進位。定義參數常量：「%d」。</li>
+              <li>使用8進位的字面常量，開頭加上0。定義參數常量：「%o」。</li>
+              <li>使用16進位的字面常量，開頭加上0x。定義參數常量：「%x」。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+  
+cout &lt;&lt; 26 &lt;&lt; endl; // 10進位
+cout &lt;&lt; 032 &lt;&lt; endl; // 8進位
+cout &lt;&lt; 0x1A &lt;&lt; endl; // 16進位
+  
+int n = 100;
+printf("%d\n", n); // 10進位
+printf("%o\n", n); // 8進位
+printf("%x\n", n); // 16進位
+  
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+26
+26
+26
+100
+64
+144</pre
+            >
+            <h5>◎ 字元字面常量</h5>
+            <p>字元字面常量則以單引號來包括一個字元，而有一些字元與C++中所使用的相同，為了避免在編譯上造成混亂，所以用代號表示。</p>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">escape sequence</th>
+                  <th scope="col">說明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\n</td>
+                  <td>換行、新行（newline）</td>
+                </tr>
+                <tr>
+                  <td>\t</td>
+                  <td>水平定位點（horizontal tab）</td>
+                </tr>
+                <tr>
+                  <td>\v</td>
+                  <td>垂直定位點（vertical tab）</td>
+                </tr>
+                <tr>
+                  <td>\b</td>
+                  <td>退回一格（backspace）</td>
+                </tr>
+                <tr>
+                  <td>\r</td>
+                  <td>返回（carriage return）</td>
+                </tr>
+                <tr>
+                  <td>\f</td>
+                  <td>換頁（formfeed）</td>
+                </tr>
+                <tr>
+                  <td>\a</td>
+                  <td>嗶聲（alert bell）</td>
+                </tr>
+                <tr>
+                  <td>\\</td>
+                  <td>倒斜線（backslash）</td>
+                </tr>
+                <tr>
+                  <td>\?</td>
+                  <td>問號</td>
+                </tr>
+                <tr>
+                  <td>\'</td>
+                  <td>單引號</td>
+                </tr>
+                <tr>
+                  <td>\"</td>
+                  <td>雙引號</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- =========================[C++]亂數========================= -->
+        <div id="1080926_02">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-09-26</span>
+            </div>
+            <h3>[C++]亂數</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 基本使用</h5>
+            <p>C++ 之亂數函式放在 stdlib.h / cstdlib 裡面，在使用時直接呼叫 rand( ) 便可。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+using namespace std;
+int main() { 
+
+  //產生 5 個亂數，並輸出
+  for (int i = 0; i &lt; 5; ++i)
+    printf("%d\n", rand());
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+1622650073
+984943658
+1144108930
+470211272
+101027544</pre
+            >
+            <h5>◎ 亂數種子</h5>
+            <p>將上述的程式多執行幾次會發現，怎麼每次亂數產生的都一樣，原因是沒設亂數種子，簡單的說產生器是一組公式，公式要給「初始值」，為 srand( ) 。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              初始值給固定的值都沒用，要會隨著環境變動的值才有意義
+              <li>記憶體使用量</li>
+              <li>process id</li>
+              <li>CPU 使用率</li>
+              <li>時間</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  unsigned seed;               // 宣告無號的整數變數
+  seed = (unsigned)time(NULL); // 取得時間序列
+  srand(seed);                 // 以時間序列當亂數種子
+  for(int i=0; i &lt; 5; ++i)
+    printf("%d ", rand());
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+1337905079
+2016878663
+1797804793
+610242661
+2113989002</pre
+            >
+            <p>當然有人會把第8行~第10行簡略成：srand(time(NULL)); ，這樣就不需暫存 seed 變數。</p>
+            <p>注意，srand 正常而言一份程式碼(專案)只能執行一次，如果它放在 for 迴圈裡，每次進行 rand 前就用 srand，會發現每次取出來的亂數是同一個數字。</p>
+            <p style="font-size: 20px;">◎ 亂數最大值 RAND_MAX</p>
+            <p>C/C++ 提供的 rand() ，它有範圍限制，最小是 0 ，最大被定義在 stdlib.h / cstdlib 裡面的 RAND_MAX</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  printf("%d\n", RAND_MAX); //通常出現數字32767
+
+}</pre
+            >
+            <h5>◎ 產生固定範圍的整數亂數</h5>
+            <p>若要產生 [low, up] 之整數亂數，起始值為1，我們可以這麼做</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  rand() % (up - low + 1) + low 
+
+}</pre
+            >
+            <h5>☛範例： 在60~100之間隨機顯示一個數</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+    rand();
+    printf("%d\n", rand() % 40 + 60);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+84</pre
+            >
+            <h5>☛範例： 模擬擲一顆骰子擲 10 次，並輸出其結果</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+  for (int i = 0; i &lt; 10; ++i) {
+    printf("%d ", rand() % 6 + 1);
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+6 6 2 2 5 4 4 5 1 4 </pre
+            >
+            <h5>☛範例： 摸擬擲 3 顆骰子 500 次，紀錄點數和出現的次數，最後輸出每個點數共出現幾次</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  int RunTimes = 500;     // 測試次數
+  int SumTimes[20] = {0}; // 紀錄點數出現的次數, 全歸零
+  int sum, rnd;
+
+  // 進行測試
+  for (int i = 0; i &lt; RunTimes; ++i) {                         
+    // 測試 RunTimes 次
+    rnd = rand() % 6 + 1; // 第一顆骰子出現點數
+    sum = rnd;            // 紀錄總合
+    rnd = rand() % 6 + 1; // 第二顆骰子出現點數
+    sum = sum + rnd;      // 紀錄總合
+    rnd = rand() % 6 + 1; // 第三顆骰子出現點數
+    sum = sum + rnd;      // 紀錄總合
+
+    // 將出現 sum 點數之次數加1
+    SumTimes[sum] = SumTimes[sum] + 1; 
+  }
+
+    // 輸出結果
+    sum = 0;
+    for (int i = 3; i &lt;= 18; ++i) {
+      printf(" %2d 點出現了 %3d 次\n", i, SumTimes[i]);
+      sum = sum + SumTimes[i]; // 再驗證總合是不是500次
+    }
+    printf("共  %3d 次 \n", sum);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+  3 點出現了   1 次
+  4 點出現了   4 次
+  5 點出現了  10 次
+  6 點出現了  23 次
+  7 點出現了  31 次
+  8 點出現了  56 次
+  9 點出現了  58 次
+ 10 點出現了  58 次
+ 11 點出現了  60 次
+ 12 點出現了  66 次
+ 13 點出現了  53 次
+ 14 點出現了  33 次
+ 15 點出現了  21 次
+ 16 點出現了  20 次
+ 17 點出現了   6 次
+ 18 點出現了   0 次
+共  500 次 </pre
+            >
+            <h5 id="exam_03" style="color: red">➣考題： 大樂透</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  int i, j, temp;
+    int num[7]; // 6個號碼和一個特殊號碼
+
+    srand(time(NULL)); // 隨時間取隨機值
+
+    for (i = 0; i &lt; 7; i++) {
+      temp = (rand() % 49) + 1; // 產生1到49之間的隨機值
+
+      for (j = 0; j &lt; i; j++) {
+        // 檢查之前是否有數字記憶
+        if (temp == num[j]) {          
+          i--;   // 如果是，請返回上一個數組
+          break; // 然後跳出程式
+        }
+      }
+
+      // 由於中斷命令，檢查該數字是否不是記憶
+      if (temp != num[j]) {
+        num[i] = temp;  // 如果沒有，將其存儲
+      }   
+    }
+
+    printf("獎號 : ");
+
+    for (i = 0; i &lt; 6; i++) {
+      printf("%3d", num[i]);
+    }
+
+    printf("\n特別號 : %3d\n\n", num[i]);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+獎號 :  15 46 47 37 43 20
+特別號 :  26</pre
+            >
+            <h5>◎ 浮點數亂數</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              底下程式碼分別意思
+              <li>rand回傳是一整數，乘上1.0變成浮點數。</li>
+              <li>除上亂數最大值，得到的數字一定是0~1之間。</li>
+              <li>如果要在1~2之間，參數改成：rand() * 1.0 / RAND_MAX + 1。</li>
+              <li>如果要在5~10之間，參數改成：rand() * 5.0 / RAND_MAX + 5。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+    for (int i = 0; i &lt; 10; i++) {
+      printf("%f\n", rand() * 1.0 / RAND_MAX);
+    }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.682100
+0.049483
+0.657351
+0.092662
+0.377045
+0.000397
+0.668912
+0.401579
+0.339885
+0.446613</pre
+            >
+            <h5>☛範例： 產生160~180之間的亂數</h5>
+            <ul>
+              <li>平均分布</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+    for (int i = 0; i  &lt; 10; i++) {
+      printf("%5.1f\n", rand() * 20.0 / RAND_MAX + 160);
+    }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+173.8
+164.1
+160.1
+167.3
+176.6
+161.2
+161.2
+173.0
+178.1
+174.1</pre
+            >
+            <h5>◎ 標準常態分布</h5>
+            <img src="./img/Standard_deviation_diagram.svg" alt="常態分布" />
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              數學原理在此就不解釋，以下是總結：
+              <li>將原本 rand() * 1.0 / RAND_MAX; 產生為0~1之間的平均分布亂數，產生12次並且加起來，得到0~12之間的亂數，平均值是6。</li>
+              <li>靠近6的機率比較高，靠近0跟12的機率比較低</li>
+              <li>將數值減去6，即可得到中心點為0之標準常態分布，如上圖</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+    for (int i = 0; i &lt; 20; i++) {
+        float x = 0;
+        for (int j = 0; j &lt; 12; j++) {
+            x = x + rand() * 1.0 / RAND_MAX;
+        }
+        printf("%f\n", x - 6);
+    }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.306929
+-0.052750
+0.475641
+-0.968662
+0.725494
+1.153220
+0.519143
+0.447534
+2.070555
+-0.809254
+-0.934855
+0.741910
+-0.001229
+-1.002489
+0.060562
+2.090179
+0.416714
+-0.441354
+-0.857213
+1.546948</pre
+            >
+            <h5 id="exam_04" style="color: red">➣考題： 身高常態分布</h5>
+            <ul>
+              <li>標準差是8，平均值是172</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  //時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+    for (int i = 0; i &lt; 20; i++) {
+      float x = 0;
+      for (int j = 0; j &lt; 12; j++) {
+        x = x + rand() * 1.0 / RAND_MAX;
+      }
+      printf("%5.1f\n", (x - 6) * 8 + 172);
+    }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+163.5
+184.0
+184.6
+167.0
+159.0
+170.3
+168.3
+184.7
+162.3
+172.9
+169.1
+175.2
+172.6
+170.2
+168.6
+174.9
+162.1
+178.1
+164.2
+189.0</pre
+            >
+          </div>
+        </div>
+        <!-- |文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束| -->
+      </article>
+      <footer class="text-center">
+        Copyright 2019 趙德柱 All rights reserved.
+      </footer>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
+    <script src="./js/initDB.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/scroll.js"></script>
+  </body>
+</html>
