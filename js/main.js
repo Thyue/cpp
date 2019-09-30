@@ -27,16 +27,16 @@ var app = new Vue({
       } else {
         app.visitor = leastVisitor;
       }
+      //學期時間進度條
+      var startDate = new Date('2019/09/05 20:05');
+      var endDate = new Date('2020/01/30 22:30');
+      var semester = endDate - startDate;
+      var now = new Date();
+      var spantime = now - startDate;
+      var schedule = (spantime / semester) * 100;
+      app.progress = schedule + '%';
+      app.progressFiliter = schedule.toFixed(1) + '%';
     });
-    //學期時間進度條
-    var startDate = new Date('2019/09/05 20:05');
-    var endDate = new Date('2020/01/30 22:30');
-    var semester = endDate - startDate;
-    var now = new Date();
-    var spantime = now - startDate;
-    var schedule = (spantime / semester) * 100;
-    app.progress = schedule + '%';
-    app.progressFiliter = schedule.toFixed(1) + '%';
   },
   mounted: function() {
     //在網頁載入完成是將訪客人數加1並且寫入資料庫
