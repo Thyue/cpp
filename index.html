@@ -76,14 +76,14 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/09/28 (六) 21時</span></p>
+          <p>更新 <span>108/10/05 (六) 10時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
           <div class="infoPic">
             <a href="https://www.facebook.com/w06rup3vu06"><img src="./img/facebook.png" alt="Facebook"/></a>
             <a href="https://www.instagram.com/w06rup3vu06/"><img src="./img/instagram.png" alt="Instagram"/></a>
-            <a href="#"><img src="./img/line.png" alt="Line"/></a>
+            <a href="https://line.me/ti/p/ritEvzej_o"><img src="./img/line.png" alt="Line"/></a>
             <i id="visitor" class="fa fa-eye">
               {{ visitor }}
             </i>
@@ -1595,9 +1595,9 @@ printf("%x\n", n); // 16進位
 using namespace std;
 int main() { 
 
-  //產生 5 個亂數，並輸出
-  for (int i = 0; i &lt; 5; ++i)
-    printf("%d\n", rand());
+//產生 5 個亂數，並輸出
+for (int i = 0; i &lt; 5; ++i)
+printf("%d\n", rand());
 
 }</pre
             >
@@ -1622,15 +1622,16 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  unsigned seed;               // 宣告無號的整數變數
-  seed = (unsigned)time(NULL); // 取得時間序列
-  srand(seed);                 // 以時間序列當亂數種子
-  for(int i=0; i &lt; 5; ++i)
-    printf("%d ", rand());
+unsigned seed;               // 宣告無號的整數變數
+seed = (unsigned)time(NULL); // 取得時間序列
+srand(seed);                 // 以時間序列當亂數種子
+rand();                      // 在洗牌一次
+for(int i=0; i &lt; 5; ++i)
+printf("%d ", rand());
 
 }</pre
             >
@@ -1650,11 +1651,11 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  printf("%d\n", RAND_MAX); //通常出現數字32767
+printf("%d\n", RAND_MAX); //通常出現數字32767
 
 }</pre
             >
@@ -1664,11 +1665,11 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  rand() % (up - low + 1) + low 
+rand() % (up - low + 1) + low 
 
 }</pre
             >
@@ -1677,13 +1678,13 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  srand(time(NULL));
-    rand();
-    printf("%d\n", rand() % 40 + 60);
+srand(time(NULL));
+rand();
+printf("%d\n", rand() % 40 + 60);
 
 }</pre
             >
@@ -1696,14 +1697,15 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  srand(time(NULL));
-  for (int i = 0; i &lt; 10; ++i) {
-    printf("%d ", rand() % 6 + 1);
-  }
+srand(time(NULL));
+rand();
+for (int i = 0; i &lt; 10; ++i) {
+printf("%d ", rand() % 6 + 1);
+}
 
 }</pre
             >
@@ -1716,56 +1718,56 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  int RunTimes = 500;     // 測試次數
-  int SumTimes[20] = {0}; // 紀錄點數出現的次數, 全歸零
-  int sum, rnd;
+int RunTimes = 500;     // 測試次數
+int SumTimes[20] = {0}; // 紀錄點數出現的次數, 全歸零
+int sum, rnd;
 
-  // 進行測試
-  for (int i = 0; i &lt; RunTimes; ++i) {                         
-    // 測試 RunTimes 次
-    rnd = rand() % 6 + 1; // 第一顆骰子出現點數
-    sum = rnd;            // 紀錄總合
-    rnd = rand() % 6 + 1; // 第二顆骰子出現點數
-    sum = sum + rnd;      // 紀錄總合
-    rnd = rand() % 6 + 1; // 第三顆骰子出現點數
-    sum = sum + rnd;      // 紀錄總合
+// 進行測試
+for (int i = 0; i &lt; RunTimes; ++i) {                         
+// 測試 RunTimes 次
+rnd = rand() % 6 + 1; // 第一顆骰子出現點數
+sum = rnd;            // 紀錄總合
+rnd = rand() % 6 + 1; // 第二顆骰子出現點數
+sum = sum + rnd;      // 紀錄總合
+rnd = rand() % 6 + 1; // 第三顆骰子出現點數
+sum = sum + rnd;      // 紀錄總合
 
-    // 將出現 sum 點數之次數加1
-    SumTimes[sum] = SumTimes[sum] + 1; 
-  }
+// 將出現 sum 點數之次數加1
+SumTimes[sum] = SumTimes[sum] + 1; 
+}
 
-    // 輸出結果
-    sum = 0;
-    for (int i = 3; i &lt;= 18; ++i) {
-      printf(" %2d 點出現了 %3d 次\n", i, SumTimes[i]);
-      sum = sum + SumTimes[i]; // 再驗證總合是不是500次
-    }
-    printf("共  %3d 次 \n", sum);
+// 輸出結果
+sum = 0;
+for (int i = 3; i &lt;= 18; ++i) {
+printf(" %2d 點出現了 %3d 次\n", i, SumTimes[i]);
+sum = sum + SumTimes[i]; // 再驗證總合是不是500次
+}
+printf("共  %3d 次 \n", sum);
 
 }</pre
             >
             <pre class="prettyprint lang-sh">
 輸出結果：
-  3 點出現了   1 次
-  4 點出現了   4 次
-  5 點出現了  10 次
-  6 點出現了  23 次
-  7 點出現了  31 次
-  8 點出現了  56 次
-  9 點出現了  58 次
- 10 點出現了  58 次
- 11 點出現了  60 次
- 12 點出現了  66 次
- 13 點出現了  53 次
- 14 點出現了  33 次
- 15 點出現了  21 次
- 16 點出現了  20 次
- 17 點出現了   6 次
- 18 點出現了   0 次
+ 3 點出現了   1 次
+ 4 點出現了   4 次
+ 5 點出現了  10 次
+ 6 點出現了  23 次
+ 7 點出現了  31 次
+ 8 點出現了  56 次
+ 9 點出現了  58 次
+10 點出現了  58 次
+11 點出現了  60 次
+12 點出現了  66 次
+13 點出現了  53 次
+14 點出現了  33 次
+15 點出現了  21 次
+16 點出現了  20 次
+17 點出現了   6 次
+18 點出現了   0 次
 共  500 次 </pre
             >
             <h5 id="exam_03" style="color: red">➣考題： 大樂透</h5>
@@ -1773,39 +1775,40 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
-  int i, j, temp;
-    int num[7]; // 6個號碼和一個特殊號碼
+int i, j, temp;
+int num[7]; // 6個號碼和一個特殊號碼
 
-    srand(time(NULL)); // 隨時間取隨機值
+srand(time(NULL)); // 隨時間取隨機值
+rand();            // 洗牌一次
 
-    for (i = 0; i &lt; 7; i++) {
-      temp = (rand() % 49) + 1; // 產生1到49之間的隨機值
+for (i = 0; i &lt; 7; i++) {
+temp = (rand() % 49) + 1; // 產生1到49之間的隨機值
 
-      for (j = 0; j &lt; i; j++) {
-        // 檢查之前是否有數字記憶
-        if (temp == num[j]) {          
-          i--;   // 如果是，請返回上一個數組
-          break; // 然後跳出程式
-        }
-      }
+for (j = 0; j &lt; i; j++) {
+// 檢查之前是否有數字記憶
+if (temp == num[j]) {          
+  i--;   // 如果是，請返回上一個數組
+  break; // 然後跳出程式
+}
+}
 
-      // 由於中斷命令，檢查該數字是否不是記憶
-      if (temp != num[j]) {
-        num[i] = temp;  // 如果沒有，將其存儲
-      }   
-    }
+// 由於中斷命令，檢查該數字是否不是記憶
+if (temp != num[j]) {
+num[i] = temp;  // 如果沒有，將其存儲
+}   
+}
 
-    printf("獎號 : ");
+printf("獎號 : ");
 
-    for (i = 0; i &lt; 6; i++) {
-      printf("%3d", num[i]);
-    }
+for (i = 0; i &lt; 6; i++) {
+printf("%3d", num[i]);
+}
 
-    printf("\n特別號 : %3d\n\n", num[i]);
+printf("\n特別號 : %3d\n\n", num[i]);
 
 }</pre
             >
@@ -1815,10 +1818,46 @@ int main() {
 特別號 :  26</pre
             >
             <h5>◎ 浮點數亂數</h5>
-            <ul style="list-style-type: decimal;list-style-position: inside;">
-              底下程式碼分別意思
+            <ul>
               <li>rand回傳是一整數，乘上1.0變成浮點數。</li>
-              <li>除上亂數最大值，得到的數字一定是0~1之間。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+int main() { 
+
+srand(time(NULL));
+rand();
+for (int i = 0; i &lt; 10; i++) {
+  printf("%9.1f\n", rand() * 1.0);
+}
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+739083318.0
+727911378.0
+1939676734.0
+1345106878.0
+650946577.0
+1177421821.0
+2014222089.0
+98438515.0
+893713415.0
+1140738787.0</pre
+            >
+            <h5>◎ 亂數與「高級」統計學應用<span style="color: red;font-size:12px;"> (1081003補充)</span></h5>
+
+            <h6>一、平均分佈</h6>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              我們從「平均」這個詞下手：
+              <li>假如有6個人，出席只有3人，說明出席率算法就是3除於6，再乘上100%表示。</li>
+              <li>結論：「樣本目標」除上「樣本總數」，就是平均值，其落點會在0~1之間，再乘上100%，表示多少成會發生目標動作。</li>
+              <li>同樣，平均分佈，就是「每次隨機取值」除上「亂數的最大數」，隨機落點會在0~1之間，通常我們用「u」代表(uniform)。</li>
               <li>如果要在1~2之間，參數改成：rand() * 1.0 / RAND_MAX + 1。</li>
               <li>如果要在5~10之間，參數改成：rand() * 5.0 / RAND_MAX + 5。</li>
             </ul>
@@ -1826,15 +1865,16 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
-
+              
   srand(time(NULL));
-    for (int i = 0; i &lt; 10; i++) {
-      printf("%f\n", rand() * 1.0 / RAND_MAX);
-    }
-
+  rand();
+  for (int i = 0; i &lt; 10; i++) {
+    printf("%f\n", rand() * 1.0 / RAND_MAX);
+  }
+              
 }</pre
             >
             <pre class="prettyprint lang-sh">
@@ -1850,87 +1890,155 @@ int main() {
 0.339885
 0.446613</pre
             >
-            <h5>☛範例： 產生160~180之間的亂數</h5>
+
+            <p>以下我們來做個副程式小工具吧！</p>
             <ul>
-              <li>平均分布</li>
+              <li>每次在主程式呼叫：「u(參數a)」時，回傳一平均分佈(標準差a)之亂數。</li>
             </ul>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+int main() {         
+
+  // 主程式
+                
+}</pre
+            >
+            <h5>☛範例： 產生160~180之間的亂數</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
 int main() { 
 
-  srand(time(NULL));
-    for (int i = 0; i  &lt; 10; i++) {
-      printf("%5.1f\n", rand() * 20.0 / RAND_MAX + 160);
-    }
+srand(time(NULL));
+rand();
+for (int i = 0; i  &lt; 10; i++) {
+  printf("%5.1f\n", u(20) + 160);  //呼叫u()副程式
+}
 
 }</pre
             >
             <pre class="prettyprint lang-sh">
 輸出結果：
-173.8
-164.1
-160.1
-167.3
-176.6
-161.2
-161.2
-173.0
-178.1
-174.1</pre
+175.1
+172.5
+172.5
+169.6
+168.2
+171.1
+169.2
+169.9
+164.0
+178.2</pre
             >
-            <h5>◎ 標準常態分布</h5>
-            <img src="./img/Standard_deviation_diagram.svg" alt="常態分布" />
+            <h6>二、常態分布</h6>
+            <img src="./img/class/1081003_1.svg" alt="常態分布" />
+            <p>其數學原理使用積分方法計算，如下：</p>
+            <img src="./img/class/1081003_2.png" alt="常態分布" style="margin-left: 50px;" />
             <ul style="list-style-type: decimal;list-style-position: inside;">
-              數學原理在此就不解釋，以下是總結：
+              <li>上圖是一個0~1的數線，其平均值為1/2。</li>
+              <li>在數線上每一個可能的數字距離1/2的平方加起來，就是它的變異值。</li>
+              <li>因為中間的每個數字發生的機率都一樣，所以在數學上，其變異值為： <img src="./img/class/1081003_3.png" alt="" /> 。</li>
+              <li>一共有12個數字數字加起來。</li>
+              <li><img src="./img/class/1081003_4.png" alt="(x-1/2)^2" style="width: 50px;" />：變異值，並且對x進行微分(dx)。</li>
+              <li>換算後為等式右邊之結果。</li>
+              <li>1代入：1/3*(1-1/2)^3=1/24。</li>
+              <li>0代入：1/3*(0-1/2)^3=-1/24。</li>
+              <li>結果：1/24-(-1/24)=1/12。</li>
+              <li>我們將變異值為1的這個結果稱之為常態分佈，特點就是取12次平均分佈。</li>
+            </ul>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              上面證明看不懂沒關係，以下是總結：
               <li>將原本 rand() * 1.0 / RAND_MAX; 產生為0~1之間的平均分布亂數，產生12次並且加起來，得到0~12之間的亂數，平均值是6。</li>
-              <li>靠近6的機率比較高，靠近0跟12的機率比較低</li>
+              <li>靠近6的機率比較高，靠近0跟12的機率比較低。</li>
               <li>將數值減去6，即可得到中心點為0之標準常態分布，如上圖</li>
             </ul>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
 int main() { 
 
   srand(time(NULL));
-    for (int i = 0; i &lt; 20; i++) {
-        float x = 0;
-        for (int j = 0; j &lt; 12; j++) {
-            x = x + rand() * 1.0 / RAND_MAX;
-        }
-        printf("%f\n", x - 6);
+  rand();
+  for (int i = 0; i &lt; 20; i++) {
+    float x = 0;
+    for (int j = 0; j &lt; 12; j++) {
+      x = x + rand() * 1.0 / RAND_MAX;
     }
+    printf("%9f\n", x - 6);
+  }
 
 }</pre
             >
             <pre class="prettyprint lang-sh">
 輸出結果：
-0.306929
--0.052750
-0.475641
--0.968662
-0.725494
-1.153220
-0.519143
-0.447534
-2.070555
--0.809254
--0.934855
-0.741910
--0.001229
--1.002489
-0.060562
-2.090179
-0.416714
--0.441354
--0.857213
-1.546948</pre
+ 1.227466
+ 0.428209
+ 0.604811
+ 0.547510
+ 0.667175
+-1.232056
+ 1.199063
+-0.117379
+-0.061818
+-0.679287
+-0.855229
+ 1.273336
+ 1.041810
+-0.724808
+-0.744453
+ 1.558589
+ 0.442135
+ 1.451650
+-0.160623
+-0.014659</pre
+            >
+            <p>以下我們來做個副程式小工具吧！</p>
+            <ul>
+              <li>每次在主程式呼叫：「z()」時，回傳一常態分佈之亂數。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+int main() {         
+
+  // 主程式
+                
+}</pre
             >
             <h5 id="exam_04" style="color: red">➣考題： 身高常態分布</h5>
             <ul>
@@ -1940,18 +2048,31 @@ int main() {
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;  //時間
+#include &lt;time.h&gt;  // 時間
 using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
 int main() { 
 
   srand(time(NULL));
-    for (int i = 0; i &lt; 20; i++) {
+  rand();
+  for (int i = 0; i &lt; 20; i++) {
       float x = 0;
       for (int j = 0; j &lt; 12; j++) {
         x = x + rand() * 1.0 / RAND_MAX;
       }
-      printf("%5.1f\n", (x - 6) * 8 + 172);
-    }
+      printf("%5.1f\n", z() * 8 + 172);  // 呼叫z()副程式
+  }
 
 }</pre
             >
@@ -1978,8 +2099,649 @@ int main() {
 164.2
 189.0</pre
             >
+            <h5>☛範例： ＯＯ高中學生身高172公分，標準差6，試問10000學生身高超過180公分比例是多少？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+int main() { 
+              
+  srand(time(NULL));
+    rand();
+    int n = 0;
+    for (int i = 0; i &lt; 10000; i++) {
+        float y = z() * 6 + 172;
+        if (y &gt; 180) {
+          n++;
+        }
+    }
+    printf("%.2f\n", n / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.09</pre
+            >
+            <h5>☛範例： 資管系平均身高172公分，標準差6，應外系平均身高170公分，標準差10。10000個學生內，資管系比應外系高的機率？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+int main() { 
+              
+  srand(time(NULL));
+    rand();
+    int n = 0;
+    for (int i = 0; i &lt; 10000; i++) {
+      float x = z() * 10 + 170; // 應外系
+      float y = z() * 6 + 172;  // 資管系
+        if (y &gt; x) {
+          n++;
+        }
+    }
+    printf("%.2f\n", n / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.57</pre
+            >
+            <h5>☛範例： 國軍平均身高172公分，標準差6，有一門窗最低點175公分，最高點185公分。10000個士兵直立走過，試問被子彈打到的機率？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+int main() { 
+              
+  srand(time(NULL));
+    rand();
+    int n = 0;
+    for (int i = 0; i &lt; 10000; i++) {
+      float x = z() * 10 + 175; // 門窗
+      float y = z() * 6 + 172;  // 士兵
+        if (y &gt; x) {
+          n++;
+        }
+    }
+    printf("%.2f\n", n / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.41</pre
+            >
+            <h5>☛範例： 北海魚身長125公分，標準差15；南海魚身長130公分，標準差10。若一個人可以釣十條，並且在這十條內拿出最長的來比賽，參賽者一共有1萬人，試問去哪釣魚比較有優勢？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+int main() { 
+              
+  srand(time(NULL));
+    rand();
+    int n = 0;
+    for (int i = 0; i &lt; 10000; i++) {
+        float x = maxZ(10) * 15 + 125; // 北海
+        float y = maxZ(10) * 10 + 130; // 南海
+        if (x &lt; y) {
+            n++;
+        }
+    }
+    if (n / 10000.0 &gt; 0.5) {
+        printf("南海有優勢\n");
+        printf("結果：%.2f", n / 10000.0);
+    }
+    else {
+        printf("北海有優勢\n");
+        printf("結果：%.2f", n / 10000.0);
+    }
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+北海有優勢
+結果：0.40</pre
+            >
+            <h6>三、常態分佈(執行n次)取最大值</h6>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              <li>設定一個基值a為-10，做n次常態分佈之亂數。</li>
+              <li>在這n次途中遇到比基值還大時，將數字複寫。</li>
+              <li>基值a最終結果就是這n次結果中最大的。</li>
+              <li>以下我們來做個副程式小工具吧！</li>
+            </ul>
+            <ul>
+              <li>每次在主程式呼叫：「maxZ(參數n)」時，回傳一常態分佈(執行n次)之最大值。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+int main() { 
+                          
+  // 主程式
+              
+}</pre
+            >
+            <h5>☛範例： 台灣每年降雨量2000公釐，標準差400。假設有10000個平行宇宙，試問平均50年之內可能出現最大的值？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+int main() { 
+              
+  srand(time(NULL));
+  rand();
+  int n = 0;
+  float sum = 0;
+  for (int i = 0; i &lt; 10000; i++) {
+      sum += maxZ(50) * 400 + 2000;
+  }
+  printf("%.2f\n", sum / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+2888.49</pre
+            >
+            <h5>☛範例： 大過1.5的機率是多少？</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+int main() { 
+              
+  srand(time(NULL));
+  rand();
+  /* 還在想怎麼寫 */
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+ </pre
+            >
+            <h5>☛範例： 標準常態分配檢查表</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+int main() { 
+              
+  srand(time(NULL));
+  rand();
+  /* 還在想怎麼寫 */
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+ </pre
+            >
+            <h6>四、二項分佈(Binomial distribution)</h6>
+            <p>簡單來說就是：單次成功/失敗試驗，以下我們來做個副程式小工具吧！</p>
+            <ul>
+              <li>每次在主程式呼叫：「B(參數p)」時，回傳一機率p之二項分佈亂數。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float B(float p) {
+    if (u(1) > p) {
+        return 0.0;
+    }
+    else {
+        return 1.0;
+    }
+}
+int main() { 
+                          
+  // 主程式
+              
+}</pre
+            >
+            <h5>☛範例： 輸出20次90%成功機率之二項分佈亂數</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+float B(float p)
+{
+    if (u(1) > p) {
+        return 0.0;
+    }
+    else {
+        return 1.0;
+    }
+}
+int main() { 
+                          
+  srand(time(NULL));
+  rand();
+  for (int k = 0; k &lt;= 20; k++) {
+      printf("%f\n", B(0.9));
+  }
+              
+}</pre
+            >
+            <h5>☛範例： 有一個銅板丟十次，出現9次是反面，試問銅板是公正的嗎？(信賴水準5%)</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+float B(float p) {
+    if (u(1) > p) {
+        return 0.0;
+    }
+    else {
+        return 1.0;
+    }
+}
+int main() { 
+                          
+  srand(time(NULL));
+  rand();
+  /* 還在想怎麼寫 */
+              
+}</pre
+            >
+            <h6>五、卡方分佈(χ²分布)</h6>
+            <p>用於假設檢驗和信賴區間的計算，以下我們來做個副程式小工具吧！</p>
+            <ul>
+              <li>每次在主程式呼叫：「X2(參數n)」時，回傳一n個獨立常態分佈之平方和。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float X2(int n) {
+    float sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        float x = z();
+        sum += x * x;
+    }
+    return sum;
+}
+int main() { 
+                          
+  // 主程式
+              
+}</pre
+            >
+            <h5>☛範例： 有一批鉛筆平均長度10公分，標準差0.3公分，成常態分佈，試問20次的抽驗100支結果。</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+}
+float maxZ(int n) {
+  float a = -10;
+  float y;
+  for (int i = 0; i &lt; n; i++) {
+      y = z();
+      if (y > a) {
+        a = y;
+      }
+  }
+  return a;
+}
+float X2(int n) {
+    float sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        float x = z();
+        sum += x * x;
+    }
+    return sum;
+}
+int main() { 
+                          
+  srand(time(NULL));
+  rand();
+  for (int i = 0; i &lt; 20; i++)
+    {
+        printf("%8.2f\n", X2(100));
+    }
+              
+}</pre
+            >
+            <h6>六、學生-t分佈</h6>
+            <p>常態分佈「z()」以母體標準差已知為前提。雖然在樣本數量大（超過30個）時，可以應用z()來求得近似值，但z()用在小樣本會產生很大的誤差，因此必須改用t檢定以求準確。</p>
+            <p>在此我們會使用到數學「平方根」，以下載入函式庫範例。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+#include &lt;math.h&gt;  // 數學-平方根
+using namespace std;
+int main() { 
+              
+  // 擺要撰寫得程式
+              
+}</pre
+            >
+            <ul>
+              <li>每次在主程式呼叫：「t(參數k)」時，回傳一k個獨立常態分佈修正後之t分佈。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+#include &lt;math.h&gt;  // 數學-平方根
+using namespace std;
+float z() {
+  float x = 0;
+  for (int i = 0; i &lt; 12; i++) {
+      x += u(1);
+  }
+  return x - 6;
+}
+float X2(int n) {
+  float sum = 0;
+  for (int i = 0; i &lt; n; i++) {
+      float x = z();
+      sum += x * x;
+  }
+  return sum;
+}
+float t(int k) {
+    return z() / sqrt(X2(k) / k);
+}
+int main() { 
+              
+  // 擺要撰寫得程式
+              
+}</pre
+            >
+            <h5>☛範例： 待命名。</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+#include &lt;math.h&gt;  // 數學-平方根
+using namespace std;
+float z() {
+  float x = 0;
+  for (int i = 0; i &lt; 12; i++) {
+      x += u(1);
+  }
+  return x - 6;
+}
+float X2(int n) {
+  float sum = 0;
+  for (int i = 0; i &lt; n; i++) {
+      float x = z();
+      sum += x * x;
+  }
+  return sum;
+}
+float t(int k) {
+    return z() / sqrt(X2(k) / k);
+}
+int main() { 
+              
+  srand(time(NULL));
+    rand();
+    int n = 0;
+    for (int k = 0; k &lt; 10000; k++) {
+        if (t(100) &gt; 1) {
+            n++;
+        }
+    }
+    printf("%f\n", n / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.164300</pre
+            >
+            <h6>七、F分佈</h6>
+            <p>一種連續機率分布，被廣泛應用於似然比率檢驗，適用於兩組實驗比較，以下我們來做個副程式小工具吧！</p>
+            <ul>
+              <li>每次在主程式呼叫：「F(參數m,參數n)」時，回傳一F分佈之亂數。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float z() {
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++)
+    {
+        x += u(1);
+    }
+    return x - 6;
+}
+float X2(int n) {
+    float sum = 0;
+    for (int i = 0; i &lt; n; i++)
+    {
+        float x = z();
+        sum += x * x;
+    }
+    return sum;
+}
+float f(int m, int n) {
+    return X2(m) / X2(n);
+}
+int main() { 
+              
+  // 擺要撰寫得程式
+              
+}</pre
+            >
           </div>
         </div>
+        
         <!-- |文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束| -->
       </article>
       <footer class="text-center">
