@@ -172,6 +172,78 @@ $(document).ready(function() {
     );
     return false;
   });
+  $('#goto_exam_05').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_05').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_06').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_06').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_07').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_07').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_08').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_08').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_09').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_09').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_10').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_10').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_11').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_11').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_12').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_12').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
   /*==============================回頂部==============================*/
   $('#gotop').click(function() {
     $('html, body').animate(

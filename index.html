@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="icon" type="image/png" href="./img/favicon.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -28,10 +28,18 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">考題</a>
               <div class="dropdown-menu">
                 <!-- |考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題| -->
-                <button id="goto_exam_01" class="dropdown-item">for迴圈輸出三角形</button>
-                <button id="goto_exam_02" class="dropdown-item">九九乘法表</button>
-                <button id="goto_exam_03" class="dropdown-item">大樂透</button>
-                <button id="goto_exam_04" class="dropdown-item">身高常態分佈</button>
+                <button id="goto_exam_01" class="dropdown-item">for輸出三角形 ◣</button>
+                <button id="goto_exam_02" class="dropdown-item">for輸出三角形 ◤</button>
+                <button id="goto_exam_03" class="dropdown-item">for輸出三角形 ◢</button>
+                <button id="goto_exam_04" class="dropdown-item">for輸出三角形 ◥</button>
+                <button id="goto_exam_05" class="dropdown-item">for輸出三角形 ▲</button>
+                <button id="goto_exam_06" class="dropdown-item">for輸出三角形 ▼</button>
+                <button id="goto_exam_07" class="dropdown-item">九九乘法表</button>
+                <button id="goto_exam_08" class="dropdown-item">兩個骰子之點數</button>
+                <button id="goto_exam_09" class="dropdown-item">隨機日期</button>
+                <button id="goto_exam_10" class="dropdown-item">大樂透</button>
+                <button id="goto_exam_11" class="dropdown-item">常態分佈-身高大於XX之機率</button>
+                <button id="goto_exam_12" class="dropdown-item">輸入十個數字相加</button>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -53,6 +61,8 @@
                 <button id="goto_1080919_08" class="dropdown-item">break & continue & goto</button>
                 <button id="goto_1080926_01" class="dropdown-item">字面常量</button>
                 <button id="goto_1080926_02" class="dropdown-item">亂數</button>
+                <button id="goto_1081017_01" class="dropdown-item">指標</button>
+                <button id="goto_1081017_02" class="dropdown-item">一維陣列</button>
               </div>
             </li>
             <li class="nav-item">
@@ -76,7 +86,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/10/06 (日) 12時</span></p>
+          <p>更新 <span>108/10/19 (六) 02時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -1060,14 +1070,14 @@ xxxxxxxxxx
 xxxxxxxxxx
 xxxxxxxxxx</pre
             >
-            <h5 id="exam_01" style="color: red">➣考題： for迴圈輸出三角形</h5>
-            <h6>題型一：右正三角形</h6>
+            <h5 style="color: red">➣考題： for迴圈輸出三角形</h5>
+            <h6 id="exam_01">題型一：右正三角形 ◣</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
 
-  for (int i = 0; i &lt; 5; i++) {
-    for (int j = 0; j &lt;= i; j++) {
+  for (int i = 0; i &lt; 5; i++) {     // 輸出5層，第一層從0開始，第五層為4結束
+    for (int j = 0; j &lt;= i; j++) {  // 第一層執行1次，第二層執行2次.....
         printf("x");
     }
     printf("\n");
@@ -1083,21 +1093,21 @@ xxx
 xxxx
 xxxxx</pre
             >
-            <h6>題型二：右倒三角形</h6>
+            <h6 id="exam_02">題型二：右倒三角形 ◤</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
 
-  for (int i = 0; i &lt; 5; i++) {
-    for (int j = i; j &lt; 5; j++) {
+  for (int i = 0; i &lt; 5; i++) {   // 輸出5層，第一層從0開始，第五層為4結束
+    for (int j = i; j &lt; 5; j++) { // 第一層執行5次，第二層執行4次.....
       printf("x");
     }
     printf("\n");
   }
 
-  //另一種寫法
-  for (int i = 0; i &lt; 5; i++) {
-    for (int j = 5; j &gt; i; j--) {
+  //另一種寫法(遞減)
+  for (int i = 0; i &lt; 5; i++) {   // 輸出5層，第一層從0開始，第五層為4結束
+    for (int j = 5; j &gt; i; j--) { // 第一層執行5次，第二層執行4次.....
       printf("x");
     }
     printf("\n");
@@ -1113,29 +1123,33 @@ xxx
 xx
 x</pre
             >
-            <h6>題型三：左正三角形</h6>
+            <h6 id="exam_03">題型三：左正三角形 ◢</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
 
-  for (int i = 0; i &lt; 5; i++) {
-    for (int j = 0; j &lt;= i; j++) {
-      printf("*");
+  for (int i = 0; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++) {
+            printf(" ");
+        }
+        for (int n = 0; n &lt;= i; n++) {
+            printf("*");
+        }
+        printf("\n");
     }
-    printf("\n");
-  }
 
 }</pre
             >
             <pre class="prettyprint lang-sh">
 輸出結果：
-*
-**
-***
-****
-*****</pre
+     *
+    **
+   ***
+  ****
+ *****
+******</pre
             >
-            <h6>題型四：左倒三角形</h6>
+            <h6 id="exam_04">題型四：左倒三角形 ◥</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
@@ -1160,7 +1174,7 @@ int main() {
    **
     *</pre
             >
-            <h6>題型五：正三角形</h6>
+            <h6 id="exam_05">題型五：正三角形 ▲</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
@@ -1185,7 +1199,7 @@ int main() {
   *******
  *********</pre
             >
-            <h6>題型六：倒三角形</h6>
+            <h6 id="exam_06">題型六：倒三角形 ▼</h6>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 int main() { 
@@ -1210,7 +1224,7 @@ int main() {
     ***
      *</pre
             >
-            <h5 id="exam_02" style="color: red">➣考題： 九九乘法表</h5>
+            <h5 id="exam_07" style="color: red">➣考題： 九九乘法表</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 using namespace std;
@@ -1692,6 +1706,28 @@ printf("%d\n", rand() % 40 + 60);
 輸出結果：
 84</pre
             >
+            <h5 id="exam_08" style="color: red">➣考題： 兩個骰子之點數</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+  rand();
+  int a, b;
+  a = rand() % 6 + 1;
+  b = rand() % 6 + 1;
+  printf("%d\t%d", a, b);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+2 6</pre
+            >
             <h5>☛範例： 模擬擲一顆骰子擲 10 次，並輸出其結果</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
@@ -1701,11 +1737,11 @@ printf("%d\n", rand() % 40 + 60);
 using namespace std;
 int main() { 
 
-srand(time(NULL));
-rand();
-for (int i = 0; i &lt; 10; ++i) {
-printf("%d ", rand() % 6 + 1);
-}
+  srand(time(NULL));
+  rand();
+  for (int i = 0; i &lt; 10; ++i) {
+    printf("%d ", rand() % 6 + 1);
+  }
 
 }</pre
             >
@@ -1722,31 +1758,31 @@ printf("%d ", rand() % 6 + 1);
 using namespace std;
 int main() { 
 
-int RunTimes = 500;     // 測試次數
-int SumTimes[20] = {0}; // 紀錄點數出現的次數, 全歸零
-int sum, rnd;
+  int RunTimes = 500;     // 測試次數
+  int SumTimes[20] = {0}; // 紀錄點數出現的次數, 全歸零
+  int sum, rnd;
 
-// 進行測試
-for (int i = 0; i &lt; RunTimes; ++i) {                         
-// 測試 RunTimes 次
-rnd = rand() % 6 + 1; // 第一顆骰子出現點數
-sum = rnd;            // 紀錄總合
-rnd = rand() % 6 + 1; // 第二顆骰子出現點數
-sum = sum + rnd;      // 紀錄總合
-rnd = rand() % 6 + 1; // 第三顆骰子出現點數
-sum = sum + rnd;      // 紀錄總合
+  // 進行測試
+  for (int i = 0; i &lt; RunTimes; ++i) {                         
+    // 測試 RunTimes 次
+    rnd = rand() % 6 + 1; // 第一顆骰子出現點數
+    sum = rnd;            // 紀錄總合
+    rnd = rand() % 6 + 1; // 第二顆骰子出現點數
+    sum = sum + rnd;      // 紀錄總合
+    rnd = rand() % 6 + 1; // 第三顆骰子出現點數
+    sum = sum + rnd;      // 紀錄總合
 
-// 將出現 sum 點數之次數加1
-SumTimes[sum] = SumTimes[sum] + 1; 
-}
+    // 將出現 sum 點數之次數加1
+    SumTimes[sum] = SumTimes[sum] + 1; 
+  }
 
-// 輸出結果
-sum = 0;
-for (int i = 3; i &lt;= 18; ++i) {
-printf(" %2d 點出現了 %3d 次\n", i, SumTimes[i]);
-sum = sum + SumTimes[i]; // 再驗證總合是不是500次
-}
-printf("共  %3d 次 \n", sum);
+  // 輸出結果
+  sum = 0;
+  for (int i = 3; i &lt;= 18; ++i) {
+    printf(" %2d 點出現了 %3d 次\n", i, SumTimes[i]);
+    sum = sum + SumTimes[i]; // 再驗證總合是不是500次
+  }
+  printf("共  %3d 次 \n", sum);
 
 }</pre
             >
@@ -1770,7 +1806,51 @@ printf("共  %3d 次 \n", sum);
 18 點出現了   0 次
 共  500 次 </pre
             >
-            <h5 id="exam_03" style="color: red">➣考題： 大樂透</h5>
+            <h5 id="exam_09" style="color: red">➣考題： 隨機產生日期(平年之MM月DD日)</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+int main() { 
+
+  srand(time(NULL));
+  rand();
+  srand(time(NULL));
+  rand();
+  int MM; // 存月份
+  int DD; // 存日期
+  
+  MM = rand() % 12 + 1; // 亂數取的月份
+
+  switch (MM) {  // 依照月份設定條件，亂數取得日期
+  case 1:
+  case 3:
+  case 5:
+  case 7:
+  case 8:
+  case 10:
+  case 12:
+      DD = rand() % 31 + 1;
+      break;
+  case 2:
+      DD = rand() % 28 + 1;
+      break;
+
+  default:
+      DD = rand() % 30 + 1;
+      break;
+  }
+  printf("%d月%d日", MM, DD);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+6月24日</pre
+            >
+            <h5 id="exam_10" style="color: red">➣考題： 大樂透</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
@@ -2040,7 +2120,7 @@ int main() {
                 
 }</pre
             >
-            <h5 id="exam_04" style="color: red">➣考題： 身高常態分布</h5>
+            <h5>☛範例： 身高常態分布</h5>
             <ul>
               <li>標準差是8，平均值是172</li>
             </ul>
@@ -2056,11 +2136,13 @@ float u(float a) {
               
 }
 float z() {
+
     float x = 0;
     for (int i = 0; i &lt; 12; i++) {
         x += u(1);
     }
     return x - 6;
+
 }
 int main() { 
 
@@ -2099,13 +2181,27 @@ int main() {
 164.2
 189.0</pre
             >
-            <h5>☛範例： ＯＯ高中學生身高172公分，標準差6，試問10000學生身高超過180公分比例是多少？</h5>
+            <h5>☛範例： ＯＯ高中學生身高172公分，標準差6，試問學生身高超過180公分機率是多少？(10000次推演)</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
 #include &lt;stdlib.h&gt;
 #include &lt;time.h&gt;  // 時間
 using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+
+    float x = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        x += u(1);
+    }
+    return x - 6;
+
+}
 int main() { 
               
   srand(time(NULL));
@@ -2125,7 +2221,7 @@ int main() {
 輸出結果：
 0.09</pre
             >
-            <h5>☛範例： 資管系平均身高172公分，標準差6，應外系平均身高170公分，標準差10。10000個學生內，資管系比應外系高的機率？</h5>
+            <h5 id="exam_11" style="color: red">➣考題： ＯＯ高中學生身高170公分，標準差6，試問學生身高超過175公分機率是多少？(10000次推演)</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
@@ -2138,11 +2234,53 @@ float u(float a) {
               
 }
 float z() {
+
+  float x = 0;
+  for (int i = 0; i &lt; 12; i++) {
+      x += u(1);
+  }
+  return x - 6;
+
+}
+int main() { 
+              
+  srand(time(NULL));
+  rand();
+  int n = 0;
+  for (int i = 0; i &lt; 10000; i++) {
+      float y = z() * 6 + 170;
+      if (y &gt; 175) {
+        n++;
+      }
+  }
+  printf("%.2f\n", n / 10000.0);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+0.21</pre
+            >
+            <h5>☛範例： 資管系平均身高172公分，標準差6，應外系平均身高170公分，標準差10。資管系比應外系高的機率？(10000次推演)</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt; // RAND_MAX
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;  // 時間
+using namespace std;
+float u(float a) {
+              
+  return rand() * a / RAND_MAX;
+              
+}
+float z() {
+
     float x = 0;
     for (int i = 0; i &lt; 12; i++) {
         x += u(1);
     }
     return x - 6;
+
 }
 int main() { 
               
@@ -2164,7 +2302,7 @@ int main() {
 輸出結果：
 0.57</pre
             >
-            <h5>☛範例： 國軍平均身高172公分，標準差6，有一窗戶最低點175公分，高度10公分。槍塔感應到士兵走動便擊發，10000個士兵直立走過，試問被子彈打到的機率？</h5>
+            <h5>☛範例： 國軍平均身高172公分，標準差6，有一窗戶最低點175公分，高度10公分。槍塔感應到士兵走動便完美擊發，試問被子彈打到的機率？(10000次推演)</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 #include &lt;stdio.h&gt; // RAND_MAX
@@ -2177,11 +2315,13 @@ float u(float a) {
               
 }
 float z() {
+
     float x = 0;
     for (int i = 0; i &lt; 12; i++) {
         x += u(1);
     }
     return x - 6;
+
 }
 int main() { 
               
@@ -2869,6 +3009,234 @@ int main() {
   // 擺要撰寫得程式
               
 }</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]指標========================= -->
+        <div id="goto_1081017_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-10-17</span>
+            </div>
+            <h3>[C++]指標</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>指標，其實也只是一個變數，只是這個變數的意義是：指向某個儲存位址。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              以下是我們平常宣告時程式背後作用的原理：
+              <li>Symbol指的是符號，就是代表記憶體指定空間之命名。</li>
+              <li>Address指得是位址，就是代表記憶體指定空間之地址。假如電腦是32位元就代表一個程式可以控制2的32次方的位址，大約4GB;同理64位元以此類推。</li>
+              <li>Type指得是類型，就是代表記憶體指定空間所能儲存的資料類型。</li>
+              <li>Value指得是記憶體指定空間儲存的數值。</li>
+              <li>符號&，稱為address of (取址)。符號*，代表的意義是指標。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int a = 10;    // 整數
+  int b = 20;    // 整數
+  float c = 1.5; // 浮點數
+  char d = 'g';  // 字元
+  int *e;        // 位址(且必須存整數)
+  
+  // 因為32位元電腦是4乘8位元，2的4次方是16，所以用16進制觀看位址
+  printf("%X\n", &a); // 顯示a記憶體空間的位址
+  printf("%X\n", &b); // 顯示b記憶體空間的位址
+  printf("%X\n", &c); // 顯示c記憶體空間的位址
+  printf("%X\n", &d); // 顯示d記憶體空間的位址
+  printf("%X\n", &e); // 顯示d記憶體空間的位址
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+EB4AC4CC
+EB4AC4C8
+EB4AC4C4
+EB4AC4C3
+EB4AC4B8</pre
+            >
+            <p>以下為上述運行所產生之Symbol Table符號表。</p>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>a</td>
+                  <td>EB4AC4CC</td>
+                  <td>int</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>b</td>
+                  <td>EB4AC4C8</td>
+                  <td>int</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>c</td>
+                  <td>EB4AC4C4</td>
+                  <td>float</td>
+                  <td>1.5</td>
+                </tr>
+                <tr>
+                  <td>d</td>
+                  <td>EB4AC4C3</td>
+                  <td>char</td>
+                  <td>g</td>
+                </tr>
+                <tr>
+                  <td>e</td>
+                  <td>EB4AC4B8</td>
+                  <td>int*</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              由上面可知：
+              <li>a的位置比b多4個位元。</li>
+              <li>一個整數是4個位元，所以差一個整數的位置。</li>
+              <li>將c內部存入b位址加一個整數的位置(也就是a的位置)，並且在那個位置賦值30。</li>
+              <li>此時a的空間數值被改寫成30。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  iint a = 10;    // 整數
+  int b = 20;     // 整數
+  float c = 1.5;  // 浮點數
+  char d = 'g';   // 字元
+  int *e;         // 位址(且必須存整數)
+
+  e = &b + 1;        // 在記憶體空間e存入的位址：b位址加一個整數的位置(也就是a的位置)
+  *e = 30;           // 在記憶體空間e存入的位址之空間賦值30
+  printf("%d\n", a); // 印出a空間的值
+           
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+30</pre
+            >
+            <p>以上功能雖然有它的邏輯精髓在，但同時也暴露C語言的缺點，不直接改變a的內容，卻用b跟c運算去改變。</p>
+            <p>所有的病毒程式都是掌控到記憶體的位置，透露訊息。</p>
+          </div>
+        </div>
+        <!-- =========================[C++]一維陣列========================= -->
+        <div id="goto_1081017_02">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-10-27</span>
+            </div>
+            <h3>[C++]一維陣列</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 基本使用</h5>
+            <p>「陣列」(Array)讓您可以宣告一個以「索引」(index)作為識別的資料結構，宣告陣列的方式如下：</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int iarr[10];    // 宣告10個元素的整數之陣列
+  float farr[10];  // 宣告10個元素的浮點數之陣列
+  char carr[10];   // 宣告10個元素的字元之陣列
+              
+}</pre
+            >
+            <p>您也可以在宣告陣列時初始所有的陣列值，例如：</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int iarr[5] = {0, 1, 2, 3, 4};
+  float farr[5] = {0.0, 0.1, 0.2, 0.3, 0.4};
+  char carr[5] = {'A', 'B', 'C', 'D', 'E'};
+  bool barr[5] = {false, true, false, true, false};
+              
+}</pre
+            >
+            <p>如果在宣告陣列，初始值是未知時，可使用以下方法宣告，避免其它的程式存取到非預期的數值。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int irr[10] = {0};
+  float farr[10] = {0.0};
+  char carr[10] = {'\0'};
+  bool barr[10] = {false};
+              
+}</pre
+            >
+            <h5>◎ 索引</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              陣列最好用的就是索引這個功能：
+              <li>下面是一個宣告5個元素的整數之陣列。</li>
+              <li>索引0的位置為23，我們使用：iarr[0]做表示。</li>
+              <li>索引1的位置為42，我們使用：iarr[1]做表示，以此類推。</li>
+              <li>程式第5行意思是在陣列索引4位置取數值98，並且賦值至m。</li>
+              <li>印出m數值為98。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int iarr[5] = {23, 42, 51, 85, 98};
+  int m = iarr[4];
+  printf("%d", m);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+98</pre
+            >
+            <h5 id="exam_12" style="color: red">➣考題： 輸入十個數字相加</h5>
+            <p>在螢幕輸入10個數字，然後把這10個數字加起來，再把答案印出來。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+              
+  int x[10];   // 宣告10個元素的整數之陣列
+  int sum = 0;
+  for (int i = 0; i &lt; 10; i++) {
+      scanf("%d", x + i); // x + i是指標，*(x + i)指的是內容
+  }
+  for (int i = 0; i &lt; 10; i++) {
+      sum += x[i]; // sum = sum + *(x + i); -&gt; sum = sum + x[i];
+  }
+  printf("答案：%d\n", sum);
+              
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+答案：55</pre
             >
           </div>
         </div>
