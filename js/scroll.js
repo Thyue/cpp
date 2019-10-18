@@ -135,6 +135,24 @@ $(document).ready(function() {
     );
     return false;
   });
+  $('#goto_1081017_01').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#1081017_01').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_1081017_02').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#1081017_02').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
   /*==============================考題==============================*/
   $('#goto_exam_01').click(function() {
     $('html, body').animate(
