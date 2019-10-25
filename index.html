@@ -63,6 +63,7 @@
                 <button id="goto_1080926_02" class="dropdown-item">亂數</button>
                 <button id="goto_1081017_01" class="dropdown-item">指標</button>
                 <button id="goto_1081017_02" class="dropdown-item">一維陣列</button>
+                <button id="goto_1081024_01" class="dropdown-item">字元</button>
               </div>
             </li>
             <li class="nav-item">
@@ -86,7 +87,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/10/19 (六) 02時</span></p>
+          <p>更新 <span>108/10/16 (六) 01時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -210,6 +211,7 @@ Hello C++!
             <h3>[C++]資料型態</h3>
           </div>
           <div class="artContent mt-1">
+            <h5>◎ 基本概念</h5>
             <p>由於資料的型態各不相同，在儲存時所需要的容量不一，不同的 資料必須要配給不同的空間大小來儲存</p>
             <p>下列出現「word」一詞先想像為一個單位用量，在32位元機器上通常一個word是4個位元組。</p>
             <p style="color: red">下列只顯示目前有上課進度有教到的，未來有新增在做更新。</p>
@@ -217,24 +219,24 @@ Hello C++!
               常見的資料型態如下：
               <li>整數：目前只有教到int(未來有教再新增)，int表示一個word。</li>
               <li>浮點數：用來表示小數值，可以區分為float、double，float的長度為一個word，double的長度為二個word。</li>
-              <li>布林：用來表示布林數，在程式中佔一個位元組，可以使用true或false 字面常量(Literal constant)來表示，實際上的數值則分別對應於1與0</li>
+              <li>布林：用來表示布林數，在程式中佔一個位元組，可以使用true或false 字面常量(Literal constant)來表示。</li>
+              <li>字元：用來儲存字元，長度為1個位元組，其字元編碼主要依ASCII表而來，由於字元在記憶體中所佔有的空間較小，所以它也可以用來儲存較小範圍的整數。</li>
             </ul>
             <p>以上的資料型態在記憶體中所佔有的大小依平台系統而有所差異，最好的作法是使用sizeof()運算子，它可以告訴您確實的記憶體大小。</p>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 using namespace std;
 int main() { 
-  
+
   cout &lt;&lt; "int\t" &lt;&lt; sizeof(int) &lt;&lt; endl; 
   cout &lt;&lt; "float\t" &lt;&lt; sizeof(float) &lt;&lt; endl; 
-  cout &lt;&lt; "double\t" &lt;&lt; sizeof(double) &lt;&lt; endl; 
-  
+  cout &lt;&lt; "double\t" &lt;&lt; sizeof(double) &lt;&lt; endl;
+  cout &lt;&lt; "char\t" &lt;&lt; sizeof(char) &lt;&lt; endl;
+
   cout &lt;&lt; "sizeof(bool)\t" &lt;&lt; sizeof(bool) &lt;&lt; endl;
   cout &lt;&lt; "sizeof(true)\t" &lt;&lt; sizeof(true) &lt;&lt; endl;
-  cout &lt;&lt; "sizeof(false)\t" &lt;&lt; sizeof(false) &lt;&lt; endl;
-  cout &lt;&lt; "true\t" &lt;&lt; static_cast&lt;int&gt;(true) &lt;&lt; endl;
-  cout &lt;&lt; "false\t" &lt;&lt; static_cast&lt;int&gt;(false);
-  
+  cout &lt;&lt; "sizeof(false)\t" &lt;&lt; sizeof(false);
+
 }</pre
             >
             <pre class="prettyprint lang-sh">
@@ -242,9 +244,25 @@ int main() {
 int 4
 float 4
 double  8
+char       1
 sizeof(bool)  1
 sizeof(true)  1
-sizeof(false) 1
+sizeof(false) 1</pre
+            >
+            <h5>◎ 布林</h5>
+            <p>實際上的數值則分別對應於1與0。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  cout &lt;&lt; "true\t" &lt;&lt; static_cast&lt;int&gt;(true) &lt;&lt; endl;
+  cout &lt;&lt; "false\t" &lt;&lt; static_cast&lt;int&gt;(false);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
 true  1
 false 0</pre
             >
@@ -1504,24 +1522,28 @@ int main() {
             <p>在程式中寫下1、1.0、3.14159這樣的數值，這類數值稱之為「字面常量」(Literal constant)</p>
             <ul style="list-style-type: decimal;list-style-position: inside;">
               整數字面常量可以用8進位、10進位與16進位來表示：
-              <li>一般習慣使用10進位。定義參數常量：「%d」。</li>
+              <li>一般習慣使用10進位，整數。定義參數常量：「%d」。</li>
               <li>使用8進位的字面常量，開頭加上0。定義參數常量：「%o」。</li>
               <li>使用16進位的字面常量，開頭加上0x。定義參數常量：「%x」。</li>
+              <li>浮點數。定義參數常量：「%f」。</li>
+              <li>字元。定義參數常量：「%c」。下方因為ASCII碼100為字元'd'。</li>
             </ul>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
 using namespace std;
 int main() { 
   
-cout &lt;&lt; 26 &lt;&lt; endl; // 10進位
-cout &lt;&lt; 032 &lt;&lt; endl; // 8進位
-cout &lt;&lt; 0x1A &lt;&lt; endl; // 16進位
+  cout &lt;&lt; 26 &lt;&lt; endl;   // 10進位
+  cout &lt;&lt; 032 &lt;&lt; endl;  // 8進位
+  cout &lt;&lt; 0x1A &lt;&lt; endl; // 16進位
   
-int n = 100;
-printf("%d\n", n); // 10進位
-printf("%o\n", n); // 8進位
-printf("%x\n", n); // 16進位
-  
+  int n = 100;
+  printf("%d\n", n);    // 10進位
+  printf("%o\n", n);    // 8進位
+  printf("%x\n", n);    // 16進位
+  printf("%c\n", 3.14); // 浮點數
+  printf("%c\n", n);    // 字元
+
 }</pre
             >
             <pre class="prettyprint lang-sh">
@@ -1531,7 +1553,9 @@ printf("%x\n", n); // 16進位
 26
 100
 64
-144</pre
+144
+3.140000
+d</pre
             >
             <h5>◎ 字元字面常量</h5>
             <p>字元字面常量則以單引號來包括一個字元，而有一些字元與C++中所使用的相同，為了避免在編譯上造成混亂，所以用代號表示。</p>
@@ -3237,6 +3261,80 @@ int main() {
 9
 10
 答案：55</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]字元========================= -->
+        <div id="1081024_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-10-24</span>
+            </div>
+            <h3>[C++]字元</h3>
+          </div>
+          <div class="artContent mt-1">
+            <p>宣告一個字元並且打印出字元。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char z = 'A';
+  printf("%c", z);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+A</pre
+            >
+            <p>從螢幕上讀一個字元，再把他打印出來。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char z;
+  scanf("%c", &z);
+  printf("%c\n", z);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+F
+F</pre
+            >
+            <p>因為我們知道字元儲存在記憶體其實是一段二進制的數字，而這個數字對應的就是ASCII碼。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char z = 'A';
+  printf("%d", z);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+65</pre
+            >
+            <p>當然我們也可以透過ASCII碼之數字，來打印一個字元。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char z;
+  z = 68;
+  printf("%c", z);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+D</pre
             >
           </div>
         </div>

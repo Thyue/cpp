@@ -153,6 +153,15 @@ $(document).ready(function() {
     );
     return false;
   });
+  $('#goto_1081024_01').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#1081024_01').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
   /*==============================考題==============================*/
   $('#goto_exam_01').click(function() {
     $('html, body').animate(
