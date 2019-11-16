@@ -28,7 +28,7 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">考題</a>
               <div class="dropdown-menu">
                 <!-- |考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題| -->
-                <button id="goto_exam_01" class="dropdown-item">暫無資料</button>
+                <button id="goto_exam_XX" class="dropdown-item">暫無資料</button>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -37,6 +37,8 @@
                 <!-- |章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節|章節| -->
                 <button id="goto_1081107_01" class="dropdown-item">結構struct</button>
                 <button id="goto_1081107_02" class="dropdown-item">動態記憶體</button>
+                <button id="goto_1081114_01" class="dropdown-item">字串</button>
+                <button id="goto_1081114_02" class="dropdown-item">檔案操作與處理</button>
               </div>
             </li>
             <li class="nav-item">
@@ -60,7 +62,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/11/10 (日) 15時</span></p>
+          <p>更新 <span>108/11/16 (六) 14時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -191,7 +193,7 @@ int main() {
         <div id="1081107_02">
           <div class="artHeader">
             <div class="artTime">
-              <span class="artTime">2019-10-27</span>
+              <span class="artTime">2019-11-07</span>
             </div>
             <h3>[C++]動態記憶體</h3>
           </div>
@@ -327,6 +329,394 @@ int main() {
 帳戶  17，餘額：0.00元
 帳戶  18，餘額：0.00元
 帳戶  19，餘額：0.00元</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]字串========================= -->
+        <div id="1081114_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-11-14</span>
+            </div>
+            <h3>[C++]字串</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 基本使用</h5>
+            <p>字串就是把字元放置陣列。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char str[10];  // 最多存9個字元
+  str[0] = 'a';
+  str[1] = 'p';
+  str[2] = 'p';
+  str[3] = 'l';
+  str[4] = 'e';
+  str[5] = 0;    // 代表結束，後面在塞入的字都不會執行
+  str[6] = 'd';  // 不會執行
+  str[7] = 'o';  // 不會執行
+  str[8] = 'g';  // 不會執行
+  printf("%s", str); // 印出字串
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+apple</pre
+            >
+            <h5>◎ 處理字串長使用之功能</h5>
+            <h6>一、回傳字串長度</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char str[10];   // 最多存9個字元
+  str[0] = 'a';
+  str[1] = 'p';
+  str[2] = 'p';
+  str[3] = 'l';
+  str[4] = 'e';
+  str[5] = 0;     // 代表結束，後面在塞入的字都不會執行
+  str[6] = 'd';   // 不會執行
+  str[7] = 'o';   // 不會執行
+  str[8] = 'g';   // 不會執行
+  printf("%lu", strlen(str)); // 回傳字串長度並且印出
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+5</pre
+            >
+            <p>我們就來做一個程式，功能為：判定我們輸入的字串長度。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char input[80];
+
+  puts("請輸入字串...");
+  scanf("%s", input);
+
+  size_t length = strlen(input);
+  printf("字串長度：%lu\n", length);
+
+  return 0;
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入字串...
+installed
+字串長度：9</pre
+            >
+            <h6>二、字串複製</h6>
+            <p>主要是要講解strcpy用法：strcpy(目的字元陣列, 來源字串, 複製字元長度)。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char str[10];  // 原本字元陣列
+  char goal[10]; // 目的字元陣列
+  str[0] = 'a';
+  str[1] = 'p';
+  str[2] = 'p';
+  str[3] = 'l';
+  str[4] = 'e';
+  str[5] = 0;
+  strcpy(goal, str);  // 複製字串到目標字元陣列
+  printf("%s", goal); // 印出複製完字串
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+apple</pre
+            >
+            <p>既然了解基礎用法，我們就來進階一點。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char input[80];
+  char copied[80];
+
+  puts("請輸入字串...");
+  fgets(input, sizeof(input) / sizeof(input[0]), stdin);
+
+  strcpy(copied, input);
+  printf("複製整個字串：%s\n", copied);
+
+  // 重設所有字元為空字元
+  memset(copied, '\0', sizeof(copied));
+
+  strncpy(copied, input, 4);
+  printf("複製部份字串：%s\n", copied);
+
+  return 0;
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+Justin
+複製整個字串：Justin
+複製部份字串：Just</pre
+            >
+            <h6>三、比較字串</h6>
+            <p>主要是要講解strcmp用法：strcmp(比較字串1, 比較字串2)，第一個字串大於第二個字串回傳正值，反之回傳負值，如果相等則回傳0。(比較字串時，是比較當下該個字元使用ASCII code相減)。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char str[10];  // 原本字串
+  char goal[10]; // 複製完後的字串
+  str[0] = 'a';
+  str[1] = 'p';
+  str[2] = 'p';
+  str[3] = 'l';
+  str[4] = 'e';
+  str[5] = 0;
+  str[6] = 'g';
+  str[7] = 0;
+  strcpy(goal, str);               // 複製字串到目標
+  str[5] = 'a';                    // 改變str的字串
+  printf("%d", strcmp(str, goal)); // 比較字串
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+97</pre
+            >
+            <h6>四、字串串接</h6>
+            <p>主要是要講解strcat用法：strcat(字串1, 字串2)，第二個參數會串接到第一個參數之後。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  char str1[10];
+  char str2[10];
+  str1[0] = 'a';
+  str1[1] = 'b';
+  str1[2] = 'c';
+  str1[3] = 0;
+  str2[0] = '+';
+  str2[1] = '1';
+  str2[2] = '2';
+  str2[3] = '3';
+  str2[4] = '4';
+  str2[5] = 0;
+  printf("%s", strcat(str1, str2)); // 印出串接後字串
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+abc+1234</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]檔案操作與處理========================= -->
+        <div id="1081114_02">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-11-14</span>
+            </div>
+            <h3>[C++]檔案操作與處理</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>◎ 建立一個TXT檔，並且寫入內容。</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int a = 10;
+  FILE *f; // 宣告一個f空間，可儲存檔案
+  // r = read 讀取
+  // w = write 寫入
+  // a = append 插入
+  f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
+  fprintf(f, "%d", a);       // 寫入檔案內容
+  fclose(f);                 // 關閉檔案
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+abc.txt內容結果：
+10</pre
+            >
+            <p>要注意！若你是要在新增文字上面要使用append而不是write，使用write是複寫的意思。</p>
+            <p>append</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  FILE *f;
+  f = fopen("abc.txt", "a"); // 開啟檔案abc.txt，為插入模式
+  fprintf(f, "%d", 20);      // 寫入檔案內容
+  fclose(f);
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+abc.txt內容結果：
+1020</pre
+            >
+            <p>write</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  FILE *f;
+  f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
+  fprintf(f, "%d", 20);      // 寫入檔案內容
+  fclose(f);
+
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+20</pre
+            >
+            <h5>◎ 讀取TXT檔內容</h5>
+            <h6>範例一</h6>
+            <pre class="prettyprint lang-sh">
+abc.txt內容：
+10
+20
+30
+40</pre
+            >
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int a;
+  FILE *f; // 宣告一個f空間，可儲存檔案
+  // r = read 讀取
+  // w = write 寫入
+  // a = append 插入
+  f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
+  for (int i = 0; i &lt; 4; i++) {
+      fscanf(f, "%d", &a); // 從螢幕上讀取abc.txt內容並且儲存到a空間;
+      printf("%d\n", a);   // 印出a空間儲存數值
+  }
+  fclose(f); // 關閉檔案
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+10
+20
+30
+40</pre
+            >
+            <h6>範例二</h6>
+            <pre class="prettyprint lang-sh">
+abc.txt內容：
+John  80
+Sam   50
+Mary  60
+Bob   20</pre
+            >
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int a;
+    char s[10];
+    FILE *f;
+    f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
+    for (int i = 0; i &lt; 4; i++) {
+        fscanf(f, "%s", s);  // 從螢幕讀取abc.txt內容中的字串
+        fscanf(f, "%d", &a); // 從螢幕讀取abc.txt內容中的整數
+        printf("%s\t%d\n", s, a);
+    }
+    fclose(f);
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+John  80
+Sam   50
+Mary  60
+Bob   20</pre
+            >
+            <p>我們不可能每次讀取檔案都偷看txt檔案內容而去設定for迴圈要去讀取幾次，以下是正常的寫法。</p>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              上面讀取txt檔的程式會遇到一個問題：
+              <li>我們不可能每次讀取檔案都偷看txt檔案內容而去設定迴圈要跑幾次。</li>
+              <li>知道次數的使用for迴圈，不知道次數使用while迴圈</li>
+              <li>程式碼EOF的意思是End of File，檔案結束之意，其實也代表：-1。</li>
+              <li>以下是txt的內容：</li>
+            </ul>
+            <pre class="prettyprint lang-sh">
+abc.txt內容：
+John     80
+Sam      50
+Mary     60
+Bob      20
+Aaliyah  90
+Brook    76
+Beverly  45
+Caitlin  98
+Daisy   100
+Eden     43</pre
+            >
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+using namespace std;
+int main() { 
+
+  int a;
+  char s[10];
+  FILE *f;
+  f = fopen("abc.txt", "r");
+  while (fscanf(f, "%s", s) != EOF) {
+      fscanf(f, "%d", &a);
+      printf("%s\t%d\n", s, a);
+  }
+  fclose(f);
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+John     80
+Sam      50
+Mary     60
+Bob      20
+Aaliyah  90
+Brook    76
+Beverly  45
+Caitlin  98
+Daisy   100
+Eden     43</pre
             >
           </div>
         </div>
