@@ -307,6 +307,15 @@ $(document).ready(function() {
     );
     return false;
   });
+  $('#goto_exam_13').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_13').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
   /*==============================回頂部==============================*/
   $('#gotop').click(function() {
     $('html, body').animate(

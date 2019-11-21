@@ -28,7 +28,7 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">考題</a>
               <div class="dropdown-menu">
                 <!-- |考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題| -->
-                <button id="goto_exam_XX" class="dropdown-item">暫無資料</button>
+                <button id="goto_exam_13" class="dropdown-item">學生成績資料處理</button>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -62,7 +62,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/11/16 (六) 14時</span></p>
+          <p>更新 <span>108/11/22 (五) 02時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -541,53 +541,52 @@ abc+1234</pre
             <h5>◎ 建立一個TXT檔，並且寫入內容。</h5>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  int a = 10;
-  FILE *f; // 宣告一個f空間，可儲存檔案
-  // r = read 讀取
-  // w = write 寫入
-  // a = append 插入
-  f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
-  fprintf(f, "%d", a);       // 寫入檔案內容
-  fclose(f);                 // 關閉檔案
+int a = 10;
+FILE *f; // 宣告一個f空間，可儲存檔案
+// r = read 讀取
+// w = write 寫入
+// a = append 插入
+f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
+fprintf(f, "%d", a);       // 寫入檔案內容
+fclose(f);                 // 關閉檔案
 
 }</pre
             >
-            <pre class="prettyprint lang-sh">
+            <pre class="prettyprint lang-xml">
 abc.txt內容結果：
+
 10</pre
             >
             <p>要注意！若你是要在新增文字上面要使用append而不是write，使用write是複寫的意思。</p>
             <p>append</p>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  FILE *f;
-  f = fopen("abc.txt", "a"); // 開啟檔案abc.txt，為插入模式
-  fprintf(f, "%d", 20);      // 寫入檔案內容
-  fclose(f);
+FILE *f;
+f = fopen("abc.txt", "a"); // 開啟檔案abc.txt，為插入模式
+fprintf(f, "%d", 20);      // 寫入檔案內容
+fclose(f);
 
 }</pre
             >
 
-            <pre class="prettyprint lang-sh">
+            <pre class="prettyprint lang-xml">
 abc.txt內容結果：
+
 1020</pre
             >
             <p>write</p>
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  FILE *f;
-  f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
-  fprintf(f, "%d", 20);      // 寫入檔案內容
-  fclose(f);
+FILE *f;
+f = fopen("abc.txt", "w"); // 開啟檔案abc.txt，為寫入模式
+fprintf(f, "%d", 20);      // 寫入檔案內容
+fclose(f);
 
 
 }</pre
@@ -599,8 +598,9 @@ int main() {
             >
             <h5>◎ 讀取TXT檔內容</h5>
             <h6>範例一</h6>
-            <pre class="prettyprint lang-sh">
+            <pre class="prettyprint lang-xml">
 abc.txt內容：
+
 10
 20
 30
@@ -608,20 +608,19 @@ abc.txt內容：
             >
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  int a;
-  FILE *f; // 宣告一個f空間，可儲存檔案
-  // r = read 讀取
-  // w = write 寫入
-  // a = append 插入
-  f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
-  for (int i = 0; i &lt; 4; i++) {
-      fscanf(f, "%d", &a); // 從螢幕上讀取abc.txt內容並且儲存到a空間;
-      printf("%d\n", a);   // 印出a空間儲存數值
-  }
-  fclose(f); // 關閉檔案
+int a;
+FILE *f; // 宣告一個f空間，可儲存檔案
+// r = read 讀取
+// w = write 寫入
+// a = append 插入
+f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
+for (int i = 0; i &lt; 4; i++) {
+fscanf(f, "%d", &a); // 從螢幕上讀取abc.txt內容並且儲存到a空間;
+printf("%d\n", a);   // 印出a空間儲存數值
+}
+fclose(f); // 關閉檔案
 
 }</pre
             >
@@ -634,8 +633,9 @@ int main() {
 40</pre
             >
             <h6>範例二</h6>
-            <pre class="prettyprint lang-sh">
+            <pre class="prettyprint lang-xml">
 abc.txt內容：
+
 John  80
 Sam   50
 Mary  60
@@ -643,19 +643,18 @@ Bob   20</pre
             >
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  int a;
-    char s[10];
-    FILE *f;
-    f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
-    for (int i = 0; i &lt; 4; i++) {
-        fscanf(f, "%s", s);  // 從螢幕讀取abc.txt內容中的字串
-        fscanf(f, "%d", &a); // 從螢幕讀取abc.txt內容中的整數
-        printf("%s\t%d\n", s, a);
-    }
-    fclose(f);
+int a;
+char s[10];
+FILE *f;
+f = fopen("abc.txt", "r"); // 開啟檔案abc.txt，為讀取模式
+for (int i = 0; i &lt; 4; i++) {
+fscanf(f, "%s", s);  // 從螢幕讀取abc.txt內容中的字串
+fscanf(f, "%d", &a); // 從螢幕讀取abc.txt內容中的整數
+printf("%s\t%d\n", s, a);
+}
+fclose(f);
 
 }</pre
             >
@@ -675,8 +674,9 @@ Bob   20</pre
               <li>程式碼EOF的意思是End of File，檔案結束之意，其實也代表：-1。</li>
               <li>以下是txt的內容：</li>
             </ul>
-            <pre class="prettyprint lang-sh">
+            <pre class="prettyprint lang-xml">
 abc.txt內容：
+
 John     80
 Sam      50
 Mary     60
@@ -690,18 +690,17 @@ Eden     43</pre
             >
             <pre class="prettyprint lang-cpp linenums:1">
 #include &lt;iostream&gt;
-using namespace std;
 int main() { 
 
-  int a;
-  char s[10];
-  FILE *f;
-  f = fopen("abc.txt", "r");
-  while (fscanf(f, "%s", s) != EOF) {
-      fscanf(f, "%d", &a);
-      printf("%s\t%d\n", s, a);
-  }
-  fclose(f);
+int a;
+char s[10];
+FILE *f;
+f = fopen("abc.txt", "r");
+while (fscanf(f, "%s", s) != EOF) {
+fscanf(f, "%d", &a);
+printf("%s\t%d\n", s, a);
+}
+fclose(f);
 
 }</pre
             >
@@ -718,6 +717,106 @@ Beverly  45
 Caitlin  98
 Daisy   100
 Eden     43</pre
+            >
+            <h5 id="exam_13" style="color: red">➣考題： 學生成績資料處理</h5>
+            <p>下列內容是學生之平時成績(40%)、期中考(30%)、期末考(30%)，利用程式產製總成績。</p>
+            <pre class="prettyprint lang-xml">
+student.txt內容：
+
+Wendy 60  76  28
+Angie 61  78  58
+Robyn 24  45  44
+Ronan 67  32  48
+Anne  57  89  70
+Lisa  28  88  72
+</pre
+            >
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              上述資料使用程式處理：
+              <li>首先，用程式寫出產製上述student.txt內容。</li>
+              <li>讀取有效資料。</li>
+              <li>進行資料處理。</li>
+              <li>產製結果。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+/* ==副程式：學生成績-功能樣板== */
+struct student {
+  char name[10];  // 學生姓名(可放9個字的字串)
+  float score[4]; // 學生成績(平時成績、期中考、期末考、總成績)
+};
+
+/* ==副程式：學生成績比重-功能樣板== */
+float w[3] = {0.4, 0.3, 0.3}; // 平時成績(40%)、期中考(30%)、期末考(30%)
+
+/* ==主程式== */
+int main() { 
+
+  FILE *f; // 宣告一個f空間，可儲存檔案
+
+  /* ==生產檔案== */
+  f = fopen("student.txt", "w"); // 開啟檔案abc.txt，為寫入模式
+  // 寫入資料
+  fprintf(f, "Wendy\t60\t76\t28\n");
+  fprintf(f, "Angie\t61\t78\t58\n");
+  fprintf(f, "Robyn\t24\t45\t44\n");
+  fprintf(f, "Ronan\t67\t32\t48\n");
+  fprintf(f, "Anne\t57\t89\t70\n");
+  fprintf(f, "Lisa\t28\t88\t72\n");
+  fclose(f);  // 關閉檔案
+
+  /* ==確認有效資料並且記錄次數== */
+  student check_data;            // 產製一個名叫check_data的student模板空間
+  int n = 0;                     // 計算「有效資料數」次數
+  f = fopen("student.txt", "r"); // 讀取student.txt內容(代表符號：f)
+  // 從螢幕讀取f，並且把文件「名字」丟入check_data之name的位置(迴圈執行條件是：名字數值不等於「檔案結束」)
+  while (fscanf(f, "%s", check_data.name) != EOF) {
+      n++; // 達成條件就計算「資料數」次數
+      // 讓讀取游標繼續讀完該行
+      for (int i = 0; i &lt; 3; i++) {
+          fscanf(f, "%f", &(check_data.score[i])); // 讀取該陣列位置之各個分數
+      }
+  }
+  fclose(f); // 關閉檔案
+
+  /* ==資料處理== */
+  // 記憶體處理
+  student *data_deal;         //「資料處理」位置的student模板空間
+  data_deal = new student[n]; // 跟記憶體要n個「學生成績」所需的位元組，存到「資料處理」的位置
+  // 讀取資料並且處理
+  f = fopen("student.txt", "r"); // 讀取student.txt內容(代表符號：f)
+  for (int i = 0; i &lt; n; i++) {
+      fscanf(f, "%s", data_deal[i].name); // 從螢幕讀取f，並且把文件「名字」丟入data_deal之name的位置
+      data_deal[i].score[3] = 0;          // 將「總成績」歸零
+      for (int j = 0; j &lt; 3; j++) {
+          fscanf(f, "%f", &(data_deal[i].score[j]));             // 讀取該陣列位置之各個分數(第一位第一個成績，第二個成績....)
+          data_deal[i].score[3] += data_deal[i].score[j] * w[j]; // 把權重計算完塞到總成績
+      }
+  }
+  fclose(f); // 關閉檔案
+
+  /* ==生產結果== */
+  f = fopen("output.txt", "w"); // 寫入output.txt內容
+  for (int i = 0; i &lt; n; i++) {
+      // 依序寫入：姓名、總成績
+      fprintf(f, "%s\t%5.1f分\n", data_deal[i].name, data_deal[i].score[3]);
+  }
+  fclose(f);        // 關閉檔案
+
+  delete data_deal; // 釋放記憶體
+
+}</pre
+            >
+            <pre class="prettyprint lang-xml">
+output.txt內容：
+
+Wendy	 55.2分
+Angie	 65.2分
+Robyn	 36.3分
+Ronan	 50.8分
+Anne	 70.5分
+Lisa	 59.2分</pre
             >
           </div>
         </div>
