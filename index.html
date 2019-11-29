@@ -63,7 +63,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/11/29 (五) 18時</span></p>
+          <p>更新 <span>108/11/29 (五) 22時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -829,8 +829,156 @@ Lisa	 59.2分</pre
             <h3>[C++]應用-讓電腦猜數字</h3>
           </div>
           <div class="artContent mt-1">
-            <!-- 文章輸入 -->
-            <h4 style="color: red;">待撰寫.............</h4>
+            <h6>設計一個程式，使用者在心裡想一個數字，讓電腦猜，並且說出幾A幾B，讓電腦最終猜出答案。</h6>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+#include &lt;time.h&gt;
+
+int possible[10000]; // 判定數字可不可能，1是可能，0是不可能。
+
+// 判定4位數的哪個位數
+int position(int n, int i)
+{
+    switch (i)
+    {
+    case 0: // 千位數
+        return n / 1000;
+    case 1: // 百位數
+        return (n / 100) % 10;
+    case 2: // 十位數
+        return (n % 100) / 10;
+    case 3: // 個位數
+        return n % 10;
+    }
+    return 0;
+}
+
+// 初始化
+void init()
+{
+    for (int i = 0; i &lt; 10000; i++)
+    {
+        possible[i] = 1; // 將所有可能的數字都設定成有可能
+
+        // 開始隨邊猜一個數字
+        for (int j = 0; j &lt; 3; j++)
+        {
+            for (int k = j + 1; k &lt; 4; k++)
+            {
+                // 如果重複，就將它設定為不可能
+                if (position(i, j) == position(i, k))
+                {
+                    possible[i] = 0;
+                }
+            }
+        }
+    }
+}
+
+// 比較數字
+int compare(int n, int m)
+{
+    int A = 0;
+    int B = 0;
+
+    for (int i = 0; i &lt; 4; i++)
+        for (int j = 0; j &lt; 4; j++)
+            if (position(n, i) == position(m, j))
+            {
+                if (i == j)
+                {
+                    A++;
+                }
+                else
+                {
+                    B++;
+                }
+            }
+
+    return A * 10 + B;
+}
+
+// 猜數字
+void make_guess(char guess[], int A, int B)
+{
+    // 把猜的數字轉變成整數
+    int n = guess[0] * 1000 + guess[1] * 100 + guess[2] * 10 + guess[3];
+
+    //如果數值不等於0執行猜所有可能數字
+    if (n != 0)
+    {
+        for (int i = 0; i &lt; 10000; i++)
+        {
+            // 如果沒猜對就將數列為不可能
+            if (possible[i] && compare(n, i) != A * 10 + B)
+            {
+                possible[i] = 0;
+            }
+        }
+    }
+
+    // 尋找可能的數字
+    int find = 0; // 將「尋找正確數字」條件初始為零
+    // 如果「尋找正確數字」等於零就繼續猜數字
+    while (find == 0)
+    {
+        int n = rand() % 10000; // 利用亂數亂猜
+        // 把數字挑出來塞到4位數
+        for (int i = 0; i &lt; 4; i++)
+        {
+            guess[i] = position(n, i);
+        }
+        // 如果是可能就會賦值為true，跳出迴圈
+        find = possible[n];
+    }
+}
+int main() { 
+
+  init();    // 遊戲初始化
+    int A = 0; // 玩家輸入A初始為零
+    int B = 0; // 玩家輸入B初始為零
+    char guess[4] = {0, 0, 0, 0};
+
+    srand(time(NULL)); // 設定亂數種子
+    rand();            // 再洗牌一次
+
+    // 如果玩家輸入A小於4就會一直執行程式猜下去
+    while (A &lt; 4)
+    {
+        make_guess(guess, A, B); // 以參數A與B條件去猜數字
+        // 把結果打印處來
+        printf("電腦猜：");
+        for (int i = 0; i &lt; 4; i++)
+        {
+            printf("%c", guess[i] + '0');
+        }
+
+        // 猜完給玩家輸入條件，讓電腦繼續猜
+        printf("\nA=");
+        scanf("%d", &A);
+        printf("B=");
+        scanf("%d", &B);
+    }
+    printf("GAME OVER!\n"); // 當A等於4時遊戲結束
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+電腦猜：4659
+A=1
+B=1
+電腦猜：5719
+A=2
+B=1
+電腦猜：5129
+A=1
+B=3
+電腦猜：2519
+A=4
+B=0
+GAME OVER!</pre
+            >
           </div>
         </div>
         <!-- |文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束|文章結束| -->
