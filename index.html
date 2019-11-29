@@ -837,10 +837,8 @@ Lisa	 59.2分</pre
 int possible[10000]; // 判定數字可不可能，1是可能，0是不可能。
 
 // 判定4位數的哪個位數
-int position(int n, int i)
-{
-    switch (i)
-    {
+int position(int n, int i) {
+    switch (i) {
     case 0: // 千位數
         return n / 1000;
     case 1: // 百位數
@@ -854,20 +852,15 @@ int position(int n, int i)
 }
 
 // 初始化
-void init()
-{
-    for (int i = 0; i &lt; 10000; i++)
-    {
+void init() {
+    for (int i = 0; i &lt; 10000; i++) {
         possible[i] = 1; // 將所有可能的數字都設定成有可能
 
         // 開始隨邊猜一個數字
-        for (int j = 0; j &lt; 3; j++)
-        {
-            for (int k = j + 1; k &lt; 4; k++)
-            {
+        for (int j = 0; j &lt; 3; j++) {
+            for (int k = j + 1; k &lt; 4; k++) {
                 // 如果重複，就將它設定為不可能
-                if (position(i, j) == position(i, k))
-                {
+                if (position(i, j) == position(i, k)) {
                     possible[i] = 0;
                 }
             }
@@ -876,42 +869,35 @@ void init()
 }
 
 // 比較數字
-int compare(int n, int m)
-{
+int compare(int n, int m) {
     int A = 0;
     int B = 0;
 
-    for (int i = 0; i &lt; 4; i++)
-        for (int j = 0; j &lt; 4; j++)
-            if (position(n, i) == position(m, j))
-            {
-                if (i == j)
-                {
-                    A++;
-                }
-                else
-                {
-                    B++;
-                }
-            }
-
+    for (int i = 0; i &lt; 4; i++) {
+      for (int j = 0; j &lt; 4; j++){
+        if (position(n, i) == position(m, j)) {
+          if (i == j) {
+              A++;
+          }
+          else {
+              B++;
+          }
+        }
+      }
+    }
     return A * 10 + B;
 }
 
 // 猜數字
-void make_guess(char guess[], int A, int B)
-{
+void make_guess(char guess[], int A, int B) {
     // 把猜的數字轉變成整數
     int n = guess[0] * 1000 + guess[1] * 100 + guess[2] * 10 + guess[3];
 
     //如果數值不等於0執行猜所有可能數字
-    if (n != 0)
-    {
-        for (int i = 0; i &lt; 10000; i++)
-        {
+    if (n != 0) {
+        for (int i = 0; i &lt; 10000; i++) {
             // 如果沒猜對就將數列為不可能
-            if (possible[i] && compare(n, i) != A * 10 + B)
-            {
+            if (possible[i] && compare(n, i) != A * 10 + B) {
                 possible[i] = 0;
             }
         }
@@ -920,12 +906,10 @@ void make_guess(char guess[], int A, int B)
     // 尋找可能的數字
     int find = 0; // 將「尋找正確數字」條件初始為零
     // 如果「尋找正確數字」等於零就繼續猜數字
-    while (find == 0)
-    {
+    while (find == 0) {
         int n = rand() % 10000; // 利用亂數亂猜
         // 把數字挑出來塞到4位數
-        for (int i = 0; i &lt; 4; i++)
-        {
+        for (int i = 0; i &lt; 4; i++) {
             guess[i] = position(n, i);
         }
         // 如果是可能就會賦值為true，跳出迴圈
@@ -943,13 +927,11 @@ int main() {
     rand();            // 再洗牌一次
 
     // 如果玩家輸入A小於4就會一直執行程式猜下去
-    while (A &lt; 4)
-    {
+    while (A &lt; 4) {
         make_guess(guess, A, B); // 以參數A與B條件去猜數字
         // 把結果打印處來
         printf("電腦猜：");
-        for (int i = 0; i &lt; 4; i++)
-        {
+        for (int i = 0; i &lt; 4; i++) {
             printf("%c", guess[i] + '0');
         }
 
