@@ -207,6 +207,15 @@ $(document).ready(function() {
     );
     return false;
   });
+  $('#goto_1081205_01').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#1081205_01').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
   /*==============================考題==============================*/
   $('#goto_exam_01').click(function() {
     $('html, body').animate(
@@ -320,6 +329,15 @@ $(document).ready(function() {
     $('html, body').animate(
       {
         scrollTop: $('#exam_13').offset().top - 56,
+      },
+      { duration: 500, easing: 'swing' }
+    );
+    return false;
+  });
+  $('#goto_exam_14').click(function() {
+    $('html, body').animate(
+      {
+        scrollTop: $('#exam_14').offset().top - 56,
       },
       { duration: 500, easing: 'swing' }
     );

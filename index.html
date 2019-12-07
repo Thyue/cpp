@@ -29,6 +29,7 @@
               <div class="dropdown-menu">
                 <!-- |考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題|考題| -->
                 <button id="goto_exam_13" class="dropdown-item">學生成績資料處理</button>
+                <button id="goto_exam_14" class="dropdown-item">公因數與倍數</button>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -40,6 +41,7 @@
                 <button id="goto_1081114_01" class="dropdown-item">字串</button>
                 <button id="goto_1081114_02" class="dropdown-item">檔案操作與處理</button>
                 <button id="goto_1081128_01" class="dropdown-item">應用-讓電腦猜數字</button>
+                <button id="goto_1081205_01" class="dropdown-item">遞迴副程式</button>
               </div>
             </li>
             <li class="nav-item">
@@ -63,7 +65,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/11/29 (五) 22時</span></p>
+          <p>更新 <span>108/12/07 (六) 13時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -960,6 +962,160 @@ B=3
 A=4
 B=0
 GAME OVER!</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]遞迴副程式========================= -->
+        <div id="1081205_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-12-05</span>
+            </div>
+            <h3>[C++]遞迴副程式</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>☛範例： 階乘</h5>
+            <p>在數學中，正整數的階乘（英語：factorial）是所有小於及等於該數的正整數的積，計為n!。</p>
+            <p>例如5的階乘計為5!，其值為120：</p>
+            <p>5! = 5 x 4 x 3 x 2 x 1 = 120.</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+// 遞迴副程式：n!
+int factorial(int n) {
+
+    if (n == 0) {
+        return 1;
+    }
+    else {
+        return n * factorial(n - 1);
+    }
+
+}
+
+int main() { 
+
+  int n;
+  printf("請輸入數字計算階乘：");
+  scanf("%d", &n);
+  printf("答案是：%d\n", xxx(n));
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入數字計算階乘：5
+答案是：120</pre
+            >
+            <h5>◎ 利用遞迴副程式來印x文字</h5>
+            <p>遞迴副程式在第一個條件式必須設立一個終止條件，否則就會變成無限迴圈。</p>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+// 遞迴副程式
+void xxx(int n) {
+
+    if (n &lt;= 0) {  // 終止條件
+        return;
+    }
+    else if (n > 100) {
+        return;
+    }
+    else {
+        printf("x");
+        xxx(n - 1);
+    }
+
+}
+
+int main() { 
+
+  xxx(5);
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+xxxxx</pre
+            >
+            <h5>☛範例： 老鼠的生殖</h5>
+            <ul style="list-style-type: decimal;list-style-position: inside;">
+              設定條件：
+              <li>兩年生一支老鼠。</li>
+              <li>第三年不能生。</li>
+            </ul>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+int F(int n){
+    if (n == 0) {
+      return 0;
+    }
+    else if (n == 1) {
+      return 1;
+    }
+    else if (n >= 2) {
+      return F(n - 1) + F(n - 2);
+    }
+}
+
+int main() { 
+
+  int n;
+  printf("請輸入老鼠生存幾年：");
+  scanf("%d", &n);
+  printf("%d\n", F(n));
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入老鼠生存幾年：25
+繁殖了75025隻</pre
+            >
+            <h5 id="exam_14" style="color: red">➣考題： 公因數與倍數</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+// 最大公因數
+int gcd(int a, int b) {
+    if (a % b == 0) {
+        return b;
+    }
+    else {
+        return gcd(b, a % b);
+    }
+}
+
+// 最小公倍數
+int lcm(int a, int b) {
+    return a * b / gcd(a, b);
+}
+
+int main() { 
+
+  int n;
+  int m;
+  printf("請輸入2個數字\n");
+  printf("數字1：");
+  scanf("%d", &n);
+  printf("數字2：");
+  scanf("%d", &m);
+  printf("最大公因數：%d\n", gcd(n, m));
+  printf("最小公倍數：%d\n", lcm(n, m));
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入2個數字
+數字1：36
+數字2：24
+最大公因數：12
+最小公倍數：72</pre
             >
           </div>
         </div>
