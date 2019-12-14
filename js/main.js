@@ -29,7 +29,7 @@ var app = new Vue({
       }
       //學期時間進度條
       var startDate = new Date('2019/09/05 20:05');
-      var endDate = new Date('2020/01/30 22:30');
+      var endDate = new Date('2019/12/26 22:30');
       var semester = endDate - startDate;
       var now = new Date();
       var spantime = now - startDate;
