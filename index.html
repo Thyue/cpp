@@ -32,6 +32,7 @@
                 <button id="goto_exam_14" class="dropdown-item">公因數與倍數</button>
                 <button id="goto_exam_15" class="dropdown-item">數字資料排序</button>
                 <button id="goto_exam_16" class="dropdown-item">文字資料排序</button>
+                <button id="goto_exam_17" class="dropdown-item">尋找指定文字</button>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -45,6 +46,7 @@
                 <button id="goto_1081128_01" class="dropdown-item">應用-讓電腦猜數字</button>
                 <button id="goto_1081205_01" class="dropdown-item">遞迴副程式</button>
                 <button id="goto_1081212_01" class="dropdown-item">資料排序</button>
+                <button id="goto_1081219_01" class="dropdown-item">尋找資料</button>
               </div>
             </li>
             <li class="nav-item">
@@ -68,7 +70,7 @@
         </div>
         <div class="info text-right">
           <!-- |更新|更新|更新|更新|更新|更新|更新|更新|更新| -->
-          <p>更新 <span>108/12/14 (六) 10時</span></p>
+          <p>更新 <span>108/12/19 (四) 22時</span></p>
           <p>{{ now | formatNowDate }}</p>
           <p>{{ now | formatNowTime }}</p>
 
@@ -1239,6 +1241,147 @@ r
 t
 結果:
 e       q       r       t       w</pre
+            >
+          </div>
+        </div>
+        <!-- =========================[C++]尋找資料========================= -->
+        <div id="1081219_01">
+          <div class="artHeader">
+            <div class="artTime">
+              <span class="artTime">2019-12-19</span>
+            </div>
+            <h3>[C++]尋找資料</h3>
+          </div>
+          <div class="artContent mt-1">
+            <h5>☛範例</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+bool cmp(char text[], char tag[])
+{
+    if (strlen(text) &lt; strlen(tag))
+        return false;
+    for (int i = 0; i &lt; strlen(tag); i++)
+        if (text[i] != tag[i])
+            return false;
+    return true;
+}
+
+int main() { 
+
+  char text[] = "ABCDE"; // 本文
+    char tag[100];       // 要找的字
+    int i;
+    printf("請輸入要尋找文字：");
+    scanf("%s", tag);
+    for (i = 0; i &lt; strlen(text); i++)
+    {
+        if (cmp(text + i, tag))
+        {
+            printf("%s-&gt;%s\n", text, text + i);
+            break;
+        }
+    }
+    if (i &gt;= strlen(text))
+        printf("找不到!");
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入要尋找文字：CD
+ABCDE->CDE</pre
+            >
+            <h5 id="exam_17" style="color: red">➣考題： 尋找指定文字</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+bool cmp(char text[], char tag[])
+{
+    if (strlen(text) &lt; strlen(tag))
+        return false;
+    for (int i = 0; i &lt; strlen(tag); i++)
+        if (text[i] != tag[i])
+            return false;
+    return true;
+}
+
+int main() { 
+
+  char text[100]; // 本文
+  char tag[100];  // 要找的字
+  printf("請輸入文本：");
+  scanf("%s", text);
+  printf("請輸入要尋找文字：");
+  scanf("%s", tag);
+  printf("尋找結果：");
+  for (int i = 0; i &lt; strlen(text); i++)
+  {
+      if (cmp(text + i, tag))
+      {
+          printf("%s\n", text + i);
+          break;
+      }
+  }
+
+}</pre
+            >
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入文本：我愛資管系
+請輸入要尋找文字：愛
+尋找結果：愛資管系</pre
+            >
+            <h5>☛範例： 搜尋多文本</h5>
+            <pre class="prettyprint lang-cpp linenums:1">
+#include &lt;iostream&gt;
+
+bool cmp(char text[], char tag[])
+{
+    if (strlen(text) &lt; strlen(tag))
+        return false;
+    for (int i = 0; i &lt; strlen(tag); i++)
+        if (text[i] != tag[i])
+            return false;
+    return true;
+}
+
+int main() { 
+
+  char text[][100] = {"我喜歡資管系", "他很討厭"}; // 本文
+    char tag[100];                              // 要找的字
+    char stop[] = "停";
+    int i;
+    while (true)
+    {
+        printf("請輸入要尋找文字：");
+        scanf("%s", tag);
+        if (cmp(tag, stop))
+            break;
+        for (int m = 0; m &lt; 2; m++)
+        {
+            for (i = 0; i &lt; strlen(text[m]); i++)
+            {
+                if (cmp(text[m] + i, tag))
+                {
+                    printf("%s\n", text[m]);
+                    break;
+                }
+            }
+        }
+    }
+
+}</pre
+            >
+
+            <pre class="prettyprint lang-sh">
+輸出結果：
+請輸入要尋找文字：我
+我喜歡資管系
+請輸入要尋找文字：討厭
+他很討厭
+請輸入要尋找文字：停</pre
             >
           </div>
         </div>
